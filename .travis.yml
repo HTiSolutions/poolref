@@ -8,3 +8,4 @@ before_install:
 
 notifications:
   slack: htisolutions:YdWkXIDUZB1cdVMdKdrQGAN8
+  email: false
