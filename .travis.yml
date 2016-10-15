@@ -7,4 +7,4 @@ before_install:
  - chmod +x gradlew
 
  notifications:
-   slack: travis encrypt "htisolutions:YdWkXIDUZB1cdVMdKdrQGAN8" --add notifications.slack
+   slack: htisolutions:YdWkXIDUZB1cdVMdKdrQGAN8
