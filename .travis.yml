@@ -3,9 +3,15 @@ language: java
 jdk:
   - oraclejdk8
 
+os:
+  - linux
+
 before_install:
  - chmod +x gradlew
 
 notifications:
   slack: htisolutions:YdWkXIDUZB1cdVMdKdrQGAN8
   email: false
+
+script:
+  - ./gradlew clean build
