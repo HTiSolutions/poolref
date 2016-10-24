@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="page">
+
+
+    <head>
+        <link href="bootstrap/css/bootstrap.min.css"
+              th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+
+        <object th:include="this :: head" th:remove="tag"/>
+
+        <!--<script src="/bootstrap/js/jquery-1.9.1.min.js"></script>-->
+    </head>
+
+    <body>
+        <div th:include="fragments/header :: header">
+            Header
+        </div>
+
+        <div th:include="this :: content">
+            Page content
+        </div>
+
+        <div th:include="fragments/footer :: footer">
+            Footer
+        </div>
+    </body>
+</html>
