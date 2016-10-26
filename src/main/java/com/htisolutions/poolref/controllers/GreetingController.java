@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.*;
 public class GreetingController {
 
     @RequestMapping("/greeting")
-    public String index(@RequestParam(
+    public String index(
+            @RequestParam(
                     value="name",
                     required=false,
                     defaultValue="World")
