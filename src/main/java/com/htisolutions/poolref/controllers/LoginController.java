@@ -5,19 +5,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/login")
 public class LoginController {
 
-
-
-    @RequestMapping("/login")
+    @RequestMapping()
     public String index() {
         return "login";
     }
 
-
-
-    @RequestMapping("/login/signin")
-    public String signin(
+    @RequestMapping("/signin")
+    public String signIn(
             @RequestParam(value="email") String email,
             @RequestParam(value="password") String password)
     {
