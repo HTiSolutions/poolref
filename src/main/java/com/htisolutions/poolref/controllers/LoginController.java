@@ -5,14 +5,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/login")
 public class LoginController {
 
-
-    @RequestMapping("/login")
+    @RequestMapping()
     public String index() {
         return "login";
     }
 
+    @RequestMapping("/signin")
+    public String signIn(
     @RequestMapping("/register")
     public String register() {
         return "register";
