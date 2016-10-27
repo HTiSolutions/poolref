@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link href="bootstrap/css/bootstrap.min.css"
+              th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <meta charset="UTF-8"/>
+        <title>Login</title>
+    </head>
+    <body>
+
+        <!--login-->
+        <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="text-center">Login</h1>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form col-md-12 center-block" th:action="@{/login/signin}">
+                            <div class="form-group">
+                                <input name="email" type="text" class="form-control input-lg" placeholder="Email" required="required"/>
+                            </div>
+                            <div class="form-group">
+                                <input name="password" type="password" class="form-control input-lg" placeholder="Password" required="required"/>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-lg btn-block">Sign In</button>
+                                <span class="pull-right">
+                                    <a href="/register">Register</a>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
