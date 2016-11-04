@@ -6,56 +6,63 @@
     <meta charset="UTF-8"/>
     <title>Register</title>
 </head>
+<style>#wrapper {width: 600px;}
+#wrapper .container {max-width: 100%; display: block;}</style>
 <body>
-    <div class="jumbotron vertical-center">
+    <div id="wrapper">
         <div class="container">
-            <div class="title text-center">
-                <h1>Register</h1>
+            <div class="page-header-centre">
+                <h1></h1>
             </div>
-            <form class="form-centre">
-                <div class="form-group">
-                    <form class="form col-md-6 center-block" th:action="@{/register/register}">
-                        <div class="row">
-                            <div class="col-xs-offset-3 col-sm-3 col-md-3">
-                                <div class="form-group">
-                                    <input name="first-name" type="text" class="form-control input-lg" placeholder="First Name" required="required"/>
-                                </div>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <div class="form-group">
-                                    <input name="last-name" type="text" class="form-control input-lg" placeholder="Last Name" required="required"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-offset-3 col-sm-6 col-md-6">
-                                <div class="form-group ">
-                                    <input name="register-email" type="text" class="form-control input-lg" placeholder="Email" required="required"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-offset-3 col-sm-3 col-md-3">
-                                <div class="form-group">
-                                    <input name="register-password" type="password" class="form-control input-lg" placeholder="Password" required="required"/>
-                                </div>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <div class="form-group">
-                                    <input name="confirm-password" type="password" class="form-control input-lg" placeholder="Confirm Password" required="required"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-offset-3 col-sm-6 col-md-6">
-                                <div class="form-group">
-                                    <button class="btn btn-primary btn-lg btn-block">Register</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+            <div class="jumbotron">
+                <div class="title text-center">
+                    <h1>Register</h1>
                 </div>
-            </form>
+                <form class="form-centre">
+                    <div class="form-group">
+                        <form class="form col-md-6 center-block" th:action="@{/register/register}">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input name="first-name" type="text" class="form-control input-lg" placeholder="First Name" required="required"/>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input name="last-name" type="text" class="form-control input-lg" placeholder="Last Name" required="required"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="form-group ">
+                                        <input name="register-email" type="text" class="form-control input-lg" placeholder="Email" required="required"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input name="register-password" type="password" class="form-control input-lg" placeholder="Password" required="required"/>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input name="confirm-password" type="password" class="form-control input-lg" placeholder="Confirm Password" required="required"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary btn-lg btn-block">Register</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </body>
