@@ -10,11 +10,11 @@ public class GreetingController {
     @RequestMapping("/greeting")
     public String index(
             @RequestParam(
-                    value="name",
-                    required=false,
-                    defaultValue="World")
-                    String name,
-                    Model model
+                value="name",
+                required=false,
+                defaultValue="World"
+            ) String name,
+            Model model
     ) {
         model.addAttribute("name", name);
         return "greeting";
