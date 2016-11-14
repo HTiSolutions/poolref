@@ -23,8 +23,7 @@ public class RegisterController {
 
         if (registerPassword.equals(confirmPassword)) {
             return "redirect:/greeting";
-        }
-        else {
+        } else {
             return "redirect:/register";
         }
     }
