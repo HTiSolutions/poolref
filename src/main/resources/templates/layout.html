@@ -12,9 +12,12 @@
         <div th:include="fragments/navbar :: navbar">
             Navigation bar
         </div>
-
-        <div th:include="this :: content">
-            Page content
+        <div class="container">
+            <div class="jumbotron">
+                <div th:include="this :: content">
+                    Page content
+                </div>
+            </div>
         </div>
 
         <div th:include="fragments/footer :: footer">

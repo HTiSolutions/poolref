@@ -3,60 +3,63 @@
     <head>
         <link href="bootstrap/css/bootstrap.min.css"
               th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
-        <link href="css/style-form.css"
-              th:href="@{css/style-form.css}" rel="stylesheet" type="text/css"/>
         <meta charset="UTF-8"/>
         <title>Register</title>
     </head>
     <body>
         <div class="container">
             <div class="title text-center">
-                <h1>Register</h1>
+                <h1></h1>
             </div>
-            <form class="form-centre" th:action="@{/register/register}">
-                <div class="form-group">
-                    <form class="form col-md-3 center-block">
-                        <div class="row">
-                            <div class="col-xs-offset-3 col-sm-3 col-md-3">
-                                <div class="form-group">
-                                    <input name="first-name" type="text" class="form-control input-lg" placeholder="First Name" required="required"/>
-                                </div>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <div class="form-group">
-                                    <input name="last-name" type="text" class="form-control input-lg" placeholder="Last Name" required="required"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-offset-3 col-sm-6 col-md-6">
-                                <div class="form-group ">
-                                    <input name="register-email" type="text" class="form-control input-lg" placeholder="Email" required="required"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-offset-3 col-sm-3 col-md-3">
-                                <div class="form-group">
-                                    <input name="register-password" type="password" class="form-control input-lg" placeholder="Password" required="required"/>
-                                </div>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <div class="form-group">
-                                    <input name="confirm-password" type="password" class="form-control input-lg" placeholder="Confirm Password" required="required"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-offset-3 col-sm-6 col-md-6">
-                                <div class="form-group">
-                                    <button class="btn btn-primary btn-lg btn-block">Register</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+            <div class="jumbotron">
+                <div class="title text-center">
+                    <h1>Register</h1>
                 </div>
-            </form>
+                <form class="form-centre" th:action="@{/register/register}">
+                    <div class="form-group">
+                        <form class="form col-md-3 center-block">
+                            <div class="row">
+                                <div class="col-xs-offset-3 col-sm-3 col-md-3">
+                                    <div class="form-group">
+                                        <input name="first-name" type="text" class="form-control input-lg" placeholder="First Name" required="required"/>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <div class="form-group">
+                                        <input name="last-name" type="text" class="form-control input-lg" placeholder="Last Name" required="required"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-offset-3 col-sm-6 col-md-6">
+                                    <div class="form-group ">
+                                        <input name="register-email" type="text" class="form-control input-lg" placeholder="Email" required="required"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-offset-3 col-sm-3 col-md-3">
+                                    <div class="form-group">
+                                        <input name="register-password" type="password" class="form-control input-lg" placeholder="Password" required="required"/>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <div class="form-group">
+                                        <input name="confirm-password" type="password" class="form-control input-lg" placeholder="Confirm Password" required="required"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-offset-3 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary btn-lg btn-block">Register</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </form>
+            </div>
         </div>
     </body>
 </html>

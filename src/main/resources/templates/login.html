@@ -3,50 +3,53 @@
     <head>
         <link href="bootstrap/css/bootstrap.min.css"
               th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
-        <link href="css/style-form.css"
-              th:href="@{css/style-form.css}" rel="stylesheet" type="text/css"/>
         <meta charset="UTF-8"/>
         <title>Login</title>
     </head>
     <body>
         <div class="container">
             <div class="title text-center">
-                <h1>Login</h1>
+                <h1></h1>
             </div>
-            <form class="form-centre" th:action="@{/login/signin}">
-                <div class="form-group">
-                    <form class="form col-md-3 center-block">
-                        <div class="row">
-                            <div class="col-xs-offset-3 col-sm-6 col-md-6">
-                                <div class="form-group ">
-                                    <input name="email" type="text" class="form-control input-lg" placeholder="Email" required="required"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-offset-3 col-sm-6 col-md-6">
-                                <div class="form-group ">
-                                    <input name="password" type="password" class="form-control input-lg" placeholder="Password" required="required"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-offset-3 col-sm-6 col-md-6">
-                                <div class="form-group">
-                                    <button class="btn btn-primary btn-lg btn-block">Sign In</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+            <div class="jumbotron">
+                <div class="title text-center">
+                    <h1>Login</h1>
                 </div>
-            </form>
-            <div class="row">
-                <div class="col-xs-offset-3 col-sm-6 col-md-6">
-                     <div class="form-group">
-                         <a href="/register">
-                             <button class="btn btn-primary btn-lg btn-block">Register</button>
-                         </a>
-                     </div>
+                <form class="form-centre" th:action="@{/login/signin}">
+                    <div class="form-group">
+                        <form class="form col-md-3 center-block">
+                            <div class="row">
+                                <div class="col-xs-offset-3 col-sm-6 col-md-6">
+                                    <div class="form-group ">
+                                        <input name="email" type="text" class="form-control input-lg" placeholder="Email" required="required"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-offset-3 col-sm-6 col-md-6">
+                                    <div class="form-group ">
+                                        <input name="password" type="password" class="form-control input-lg" placeholder="Password" required="required"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-offset-3 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary btn-lg btn-block">Sign In</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-xs-offset-3 col-sm-6 col-md-6">
+                         <div class="form-group">
+                             <a href="/register">
+                                 <button class="btn btn-primary btn-lg btn-block">Register</button>
+                             </a>
+                         </div>
+                    </div>
                 </div>
             </div>
         </div>
