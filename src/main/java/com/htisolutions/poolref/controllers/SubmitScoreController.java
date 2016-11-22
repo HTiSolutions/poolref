@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/submit-score")
 public class SubmitScoreController {
 
+    @RequestMapping()
+    public String index() { return "views/submit-score"; }
+
     @RequestMapping("/greeting")
     public String submitScore(
             @RequestParam(value="winner") String winner,

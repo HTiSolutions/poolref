@@ -42,6 +42,6 @@ public class RegisterControllerTest {
         RegisterController registerController = new RegisterController();
         mvc.perform(MockMvcRequestBuilders.get(registerController.register("Joe","Bloggs","jbloggs@gmail.com","123","123")+"/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("greeting"));
+                .andExpect(view().name("views/greeting"));
     }
 }

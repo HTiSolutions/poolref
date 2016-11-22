@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 import com.htisolutions.poolref.controllers.LoginController;
+import com.htisolutions.poolref.controllers.SubmitScoreController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,22 +18,22 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class LoginControllerTest {
+public class SubmitScoreControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
     @Test
     public void validateFormName() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/login/"))
+        mvc.perform(MockMvcRequestBuilders.get("/submit-score/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("login"));
+                .andExpect(view().name("views/submit-score"));
     }
 
     @Test
-    public void validateLoginRequest() throws Exception {
-        LoginController loginController = new LoginController();
-        mvc.perform(MockMvcRequestBuilders.get(loginController.signIn("jbloggs@gmail.com","123")+"/"))
+    public void validateScoreRequest() throws Exception {
+        SubmitScoreController submitscorecontroller = new SubmitScoreController();
+        mvc.perform(MockMvcRequestBuilders.get(submitscorecontroller.submitScore("jbloggs@gmail.com","tbliggs@hotmail.com")+"/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("views/greeting"));
     }
