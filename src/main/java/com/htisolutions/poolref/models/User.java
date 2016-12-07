@@ -17,15 +17,23 @@ public class User {
     @NotNull
     private String surname;
 
+    @NotNull
+    private String email;
+
+    @NotNull
+    private String hashedpassword;
+
     public User() { }
 
     public User(long id) {
         this.id = id;
     }
 
-    public User(String forename, String surname) {
+    public User(String forename, String surname, String email, String hashedpassword) {
         this.forename = forename;
         this.surname = surname;
+        this.email = email;
+        this.hashedpassword = hashedpassword;
     }
 
     public Long getId() {
@@ -39,6 +47,16 @@ public class User {
     public String getSurname() {
         return this.surname;
     }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getHashedpassword() {
+        return this.hashedpassword;
+    }
+
+
 }
 
 

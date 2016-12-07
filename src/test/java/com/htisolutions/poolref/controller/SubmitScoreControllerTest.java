@@ -30,12 +30,4 @@ public class SubmitScoreControllerTest {
                 .andExpect(view().name("views/submit-score"));
     }
 
-    @Test
-    public void validateScoreRequest() throws Exception {
-        SubmitScoreController submitscorecontroller = new SubmitScoreController();
-        mvc.perform(MockMvcRequestBuilders.get(submitscorecontroller.submitScore("jbloggs@gmail.com","tbliggs@hotmail.com")+"/"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("views/greeting"));
-    }
-
 }
