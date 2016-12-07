@@ -17,24 +17,16 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class LoginControllerTest {
+public class LeaderboardControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
     @Test
     public void validateFormName() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/login/"))
+        mvc.perform(MockMvcRequestBuilders.get("/leaderboard/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("login"));
-    }
-
-    @Test
-    public void validateLoginRequest() throws Exception {
-        LoginController loginController = new LoginController();
-        mvc.perform(MockMvcRequestBuilders.get(loginController.signIn("jbloggs@gmail.com","123")+"/"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("views/greeting"));
+                .andExpect(view().name("views/leaderboard"));
     }
 
 }

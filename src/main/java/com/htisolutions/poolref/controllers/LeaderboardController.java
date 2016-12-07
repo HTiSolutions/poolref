@@ -5,10 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/greeting")
-public class GreetingController {
+@RequestMapping("/leaderboard")
+public class LeaderboardController {
 
     @RequestMapping()
-    public String index() { return "views/greeting"; }
+    public String index() { return "views/leaderboard"; }
 
 }

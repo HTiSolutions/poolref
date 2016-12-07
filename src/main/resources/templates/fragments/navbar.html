@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head></head>
-
-    <body>
-        <nav class="navbar navbar-default" th:fragment="navbar">
+    <body th:fragment="navbar">
+        <nav class="navbar navbar-default navbar-static-top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Pool Referee</a>
+                    <a class="navbar-brand">Pool Referee</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">League</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="/greeting">Home</a></li>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/leaderboard">Leaderboard</a></li>
+                    <li><a href="/submit-score">Submit a Score</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/login"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
                 </ul>
             </div>
         </nav>

@@ -4,6 +4,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
+import com.htisolutions.poolref.controllers.LoginController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,29 +26,7 @@ public class GreetingControllerTest {
     public void validateFormName() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/greeting/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("greeting"))
-                .andExpect(model().attribute("name", "World"));
-    }
-
-    @Test
-    public void validateDefaultGreeting() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/greeting/"))
-                .andExpect(status().isOk())
-                .andExpect(model().attribute("name", "World"));
-    }
-
-    @Test
-    public void validatePassedGreeting() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/greeting/").param("name", "Bradley"))
-                .andExpect(status().isOk())
-                .andExpect(model().attribute("name", "Bradley"));
-    }
-
-    @Test
-    public void validateInvalidParameterGreeting() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/greeting/").param("forename", "Bradley"))
-                .andExpect(status().isOk())
-                .andExpect(model().attribute("name", "World"));
+                .andExpect(view().name("views/greeting"));
     }
 
 }

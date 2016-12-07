@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:include = "layout :: page">
+    <head th:fragment="head">
+        <title>Submit a Score</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body th:fragment="content">
+    <div class="title text-center">
+        <h1>Submit a Score!</h1>
+    </div>
+        <form class="form-centre" th:action="@{/submit-score/greeting}">
+            <div class="form-group">
+                <form class="form col-md-3 center-block">
+                    <div class="row">
+                        <div class="col-xs-offset-2 col-sm-4 col-md-4">
+                            <div class="form-group">
+                                <input name="winner" type="text" class="form-control input-lg" placeholder="Winner" required="required"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-2 col-sm-4 col-md-4">
+                            <div class="form-group">
+                                <input name="loser" type="text" class="form-control input-lg" placeholder="Loser" required="required"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-offset-3 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-lg btn-block">Submit Winner</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </form>
+    </body>
+</html>
+
