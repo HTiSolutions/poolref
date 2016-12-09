@@ -10,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.List;
+
 
 @Controller
 @RequestMapping("/user")
@@ -32,11 +34,11 @@ public class UserController {
     }
 
     @RequestMapping("/create")
-    public ModelAndView create(String forename, String surname) {
+    public ModelAndView create(String forename, String surname, String email, String hashedpassword) {
 
         String userId = "";
         try {
-            User user = new User(forename, surname);
+            User user = new User(forename, surname, email, hashedpassword);
             userDao.save(user);
             userId = String.valueOf(user.getId());
         }

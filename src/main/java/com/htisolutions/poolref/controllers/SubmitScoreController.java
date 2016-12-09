@@ -11,11 +11,4 @@ public class SubmitScoreController {
     @RequestMapping()
     public String index() { return "views/submit-score"; }
 
-    @RequestMapping("/greeting")
-    public String submitScore(
-            @RequestParam(value="winner") String winner,
-            @RequestParam(value="loser") String loser)
-    {
-        return ("redirect:/greeting");
-    }
 }

@@ -1,12 +1,20 @@
 package com.htisolutions.poolref.controllers;
 
+import com.htisolutions.poolref.models.User;
+import com.htisolutions.poolref.models.UserDao;
+import com.htisolutions.poolref.services.RegisterService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Controller
 @RequestMapping("/register")
 public class RegisterController {
+
+    @Autowired
+    private RegisterService registerService;
 
     @RequestMapping()
     public String index() {
@@ -21,10 +29,10 @@ public class RegisterController {
             @RequestParam(value = "register-password") String registerPassword,
             @RequestParam(value = "confirm-password") String confirmPassword) {
 
-        if (registerPassword.equals(confirmPassword)) {
-            return "redirect:/greeting";
-        } else {
-            return "redirect:/register";
+        if(registerService.validRegister(firstName, lastName, registerEmail, registerPassword, confirmPassword)){
+            return ("redirect:/greeting");
+        }else{
+            return ("redirect:/register");
         }
     }
 }
