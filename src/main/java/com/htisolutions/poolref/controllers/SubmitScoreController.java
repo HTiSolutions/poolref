@@ -24,15 +24,9 @@ public class SubmitScoreController {
         this.gameService = gameService;
     }
 
-//    @RequestMapping()
-//    public String index() {
-//        return "views/submit-score";
-//    }
-
     @RequestMapping()
     public ModelAndView index() {
         Iterable<String> userEmails = userService.getUserEmails();
-
 
         ModelAndView model = new ModelAndView("views/submit-score");
         model.addObject("userEmails",userEmails);
@@ -40,10 +34,7 @@ public class SubmitScoreController {
     }
 
     @RequestMapping("/submit-score")
-    public String submit(
-            @RequestParam(name = "winner") String winner,
-            @RequestParam(name = "loser") String loser) {
-
+    public String submit(String winner, String loser) {
             gameService.gameSave(winner, loser);
             return ("redirect:/submit-score");
     }

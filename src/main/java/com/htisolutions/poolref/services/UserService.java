@@ -20,9 +20,6 @@ public class UserService {
 
     public Iterable<User> getUsers(){
         Iterable<User> users = userDao.findAll();
-        if(users == null) {
-            System.out.println("no users");
-        }
         return users;
     }
 

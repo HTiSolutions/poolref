@@ -23,4 +23,9 @@ public class GameService {
             //"Error saving the game: " + ex.toString();
         }
     }
+
+    public Iterable<Game> getGames() {
+        Iterable<Game> games = gameDao.findAll();
+        return games;
+    }
 }
