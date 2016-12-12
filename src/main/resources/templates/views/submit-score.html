@@ -1,36 +1,46 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" th:include = "layout :: page">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html" th:include="layout :: page">
     <head th:fragment="head">
         <title>Submit a Score</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
+
     <body th:fragment="content">
-    <div class="title text-center">
-        <h1>Submit a Score!</h1>
-    </div>
-        <form class="form-centre" th:action="@{/submit-score}">
-            <div class="form-group">
-                <form class="form col-md-3 center-block">
-                    <div class="row">
-                        <div class="col-xs-offset-2 col-sm-4 col-md-4">
-                            <div class="form-group">
-                                <input name="winner" type="text" class="form-control input-lg" placeholder="Winner" required="required"/>
-                            </div>
-                        </div>
-                        <div class="col-xs-2 col-sm-4 col-md-4">
-                            <div class="form-group">
-                                <input name="loser" type="text" class="form-control input-lg" placeholder="Loser" required="required"/>
-                            </div>
-                        </div>
+
+        <div class="title text-center">
+            <h1>Submit a Score!</h1>
+        </div>
+
+        <form class="form-centre" action="#" th:action="@{/submit-score/submit-score}" th:object="${submitScore}" method="post">
+            <div class="row">
+
+                <div class="col-xs-offset-2 col-sm-4 col-md-4">
+                    <div class="form-group">
+
+                        <select title="Select winner" class="form-control" th:field="${submitScore.winner}" name="winnerId">
+                            <option th:each="user : ${submitScore.users}" th:value="${user.id}" th:text="${user.email}"></option>
+                        </select>
+
                     </div>
-                    <div class="row">
-                        <div class="col-xs-offset-3 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <button class="btn btn-primary btn-lg btn-block">Submit Winner</button>
-                            </div>
-                        </div>
+                </div>
+
+                <div class="col-xs-2 col-sm-4 col-md-4">
+                    <div class="form-group">
+
+                        <select title="Select loser" class="form-control" th:field="${submitScore.loser}" name="loserId">
+                            <option th:each="user : ${submitScore.users}" th:value="${user.id}" th:text="${user.email}"></option>
+                        </select>
+
                     </div>
-                </form>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-xs-offset-3 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit Winner"/>
+                    </div>
+                </div>
             </div>
         </form>
     </body>

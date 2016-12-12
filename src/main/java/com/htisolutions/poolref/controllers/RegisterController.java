@@ -13,8 +13,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @RequestMapping("/register")
 public class RegisterController {
 
-    @Autowired
     private RegisterService registerService;
+
+    @Autowired
+    RegisterController (RegisterService registerService) {
+        this.registerService = registerService;
+    }
 
     @RequestMapping()
     public String index() {
@@ -29,9 +33,9 @@ public class RegisterController {
             @RequestParam(value = "register-password") String registerPassword,
             @RequestParam(value = "confirm-password") String confirmPassword) {
 
-        if(registerService.validRegister(firstName, lastName, registerEmail, registerPassword, confirmPassword)){
+        if (registerService.validRegister(firstName, lastName, registerEmail, registerPassword, confirmPassword)) {
             return ("redirect:/greeting");
-        }else{
+        } else {
             return ("redirect:/register");
         }
     }

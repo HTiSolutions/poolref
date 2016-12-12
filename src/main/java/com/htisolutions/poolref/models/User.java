@@ -9,7 +9,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @NotNull
     private String forename;
@@ -25,7 +25,7 @@ public class User {
 
     public User() { }
 
-    public User(long id) {
+    public User(Long id) {
         this.id = id;
     }
 

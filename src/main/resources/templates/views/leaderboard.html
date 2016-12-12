@@ -6,6 +6,21 @@
     </head>
     <body th:fragment="content">
         <h1>Welcome to the Leaderboard!</h1>
-        <p>This is the leaderboard.</p>
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th>Winner</th>
+                <th>Loser</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="game : ${games}">
+                <tr>
+                    <td th:text="${game.getWinner()}"></td>
+                    <td th:text="${game.getLoser()}"></td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
     </body>
 </html>
