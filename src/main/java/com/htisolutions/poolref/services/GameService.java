@@ -15,9 +15,9 @@ public class GameService {
         this.gameDao = gameDao;
     }
 
-    public void gameSave(String winner, String loser) {
+    public void gameSave(Long winnerId, Long loserId) {
         try {
-            Game game = new Game(winner, loser);
+            Game game = new Game(winnerId, loserId);
             gameDao.save(game);
         } catch (Exception ex) {
             //"Error saving the game: " + ex.toString();

@@ -1,8 +1,10 @@
 package com.htisolutions.poolref.controllers;
 
+import com.htisolutions.poolref.models.Game;
 import com.htisolutions.poolref.models.User;
 import com.htisolutions.poolref.services.UserService;
 import com.htisolutions.poolref.services.GameService;
+import com.htisolutions.poolref.viewModels.SubmitScoreViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
@@ -24,19 +26,20 @@ public class SubmitScoreController {
         this.gameService = gameService;
     }
 
-    @RequestMapping()
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView index() {
-        Iterable<String> userEmails = userService.getUserEmails();
 
-        ModelAndView model = new ModelAndView("views/submit-score");
-        model.addObject("userEmails",userEmails);
-        return model;
+        SubmitScoreViewModel viewModel = new SubmitScoreViewModel();
+        viewModel.setUsers(userService.getUsers());
+
+        return new ModelAndView("views/submit-score", "submitScore", viewModel);
     }
 
-    @RequestMapping("/submit-score")
-    public String submit(String winner, String loser) {
-            gameService.gameSave(winner, loser);
-            return ("redirect:/submit-score");
+    @RequestMapping(value = "/submit-score", method = RequestMethod.POST)
+    public String submit(@ModelAttribute(value="submitScore") SubmitScoreViewModel model) {
+
+        gameService.gameSave(model.getWinner().getId(), model.getLoser().getId());
+        return ("redirect:/submit-score");
     }
 
 }

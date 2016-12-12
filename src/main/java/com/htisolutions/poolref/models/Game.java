@@ -6,36 +6,39 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Game {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @NotNull
-    private String winner;
+    @Column(name="winner_id")
+    private Long winnerId;
 
     @NotNull
-    private String loser;
+    @Column(name="loser_id")
+    private Long loserId;
 
     public Game() { }
 
-    public Game(long id) {
+    public Game(Long id) {
         this.id = id;
     }
 
-    public Game(String winner, String loser) {
-        this.winner = winner;
-        this.loser = loser;
+    public Game(Long winnerId, Long loserId) {
+        this.winnerId = winnerId;
+        this.loserId = loserId;
     }
 
     public Long getId() {
         return this.id;
     }
 
-    public String getWinner() {
-        return this.winner;
+    public Long getWinnerId() {
+        return this.winnerId;
     }
 
-    public String getLoser() {
-        return this.loser;
+    public Long getLoserId() {
+        return this.loserId;
     }
 }
