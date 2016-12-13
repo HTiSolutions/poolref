@@ -1,5 +1,7 @@
 package com.htisolutions.poolref.controllers;
 
+import com.htisolutions.poolref.models.UserDao;
+import com.htisolutions.poolref.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
@@ -13,10 +15,12 @@ import com.htisolutions.poolref.models.Game;
 public class LeaderboardController {
 
     private GameService gameService;
+    private UserService userService;
 
     @Autowired
-    LeaderboardController(GameService gameService) {
+    LeaderboardController(GameService gameService, UserService userService) {
         this.gameService = gameService;
+        this.userService = userService;
     }
 
     @RequestMapping()
@@ -26,6 +30,7 @@ public class LeaderboardController {
 
         ModelAndView model = new ModelAndView("views/leaderboard");
         model.addObject("games",games);
+        model.addObject("userService", userService);
         return model;
     }
 

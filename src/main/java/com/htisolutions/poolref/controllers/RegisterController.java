@@ -1,13 +1,9 @@
 package com.htisolutions.poolref.controllers;
 
-import com.htisolutions.poolref.models.User;
-import com.htisolutions.poolref.models.UserDao;
 import com.htisolutions.poolref.services.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Controller
 @RequestMapping("/register")

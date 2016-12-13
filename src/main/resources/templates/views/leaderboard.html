@@ -16,8 +16,8 @@
             <tbody>
             <th:block th:each="game : ${games}">
                 <tr>
-                    <td th:text="${game.getWinner()}"></td>
-                    <td th:text="${game.getLoser()}"></td>
+                    <td th:text="${userService.getUserById(game.getWinnerId()).getEmail()}"></td>
+                    <td th:text="${userService.getUserById(game.getLoserId()).getEmail()}"></td>
                 </tr>
             </th:block>
             </tbody>

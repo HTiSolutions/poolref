@@ -1,12 +1,10 @@
 package com.htisolutions.poolref.services;
 
+import com.htisolutions.poolref.models.UserDao;
 import java.util.ArrayList;
 import com.htisolutions.poolref.models.User;
-import com.htisolutions.poolref.models.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.*;
-import org.springframework.web.bind.annotation.*;
 
 @Service
 public class UserService {
@@ -32,6 +30,11 @@ public class UserService {
         }
         Iterable<String> userEmails = userEmailList;
         return userEmails;
+    }
+
+    public User getUserById(long id) {
+        User user = userDao.findOne(id);
+        return user;
     }
 
 }

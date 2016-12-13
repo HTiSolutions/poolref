@@ -1,11 +1,10 @@
 package com.htisolutions.poolref.services;
 
-import com.htisolutions.poolref.models.User;
 import com.htisolutions.poolref.models.UserDao;
+import com.htisolutions.poolref.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.*;
-import org.springframework.web.bind.annotation.*;
 
 @Service
 public class RegisterService {

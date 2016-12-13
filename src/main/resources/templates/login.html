@@ -13,13 +13,13 @@
                 <div class="title text-center">
                     <h1>Login</h1>
                 </div>
-                <form class="form-centre" th:action="@{/login/signin}">
+                <form class="form-centre" th:action="@{/login}" method="post">
                     <div class="form-group">
                         <form class="form col-md-3 center-block">
                             <div class="row">
                                 <div class="col-xs-offset-3 col-sm-6 col-md-6">
                                     <div class="form-group ">
-                                        <input name="email" type="text" class="form-control input-lg" placeholder="Email" required="required"/>
+                                        <input name="username" type="text" class="form-control input-lg" placeholder="Email" required="required"/>
                                     </div>
                                 </div>
                             </div>
