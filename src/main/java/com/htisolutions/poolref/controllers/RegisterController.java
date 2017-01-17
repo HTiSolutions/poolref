@@ -23,36 +23,18 @@ public class RegisterController {
         return "register";
     }
 
-//    @RequestMapping("/register")
-//    public String register(
-//            @RequestParam(value = "first-name") String firstName,
-//            @RequestParam(value = "last-name") String lastName,
-//            @RequestParam(value = "register-email") String registerEmail,
-//            @RequestParam(value = "register-password") String registerPassword,
-//            @RequestParam(value = "confirm-password") String confirmPassword) {
-//
-//        if (registerService.validRegister(firstName, lastName, registerEmail, registerPassword, confirmPassword)) {
-//            return ("redirect:/greeting");
-//        } else {
-//            return ("redirect:/register");
-//        }
-//    }
-
     @RequestMapping("/register")
-    public ModelAndView register(@RequestParam(value = "first-name") String firstName,
-                                 @RequestParam(value = "last-name") String lastName,
-                                 @RequestParam(value = "register-email") String registerEmail,
-                                 @RequestParam(value = "register-password") String registerPassword,
-                                 @RequestParam(value = "confirm-password") String confirmPassword) {
-
-
+    public String register(
+            @RequestParam(value = "first-name") String firstName,
+            @RequestParam(value = "last-name") String lastName,
+            @RequestParam(value = "register-email") String registerEmail,
+            @RequestParam(value = "register-password") String registerPassword,
+            @RequestParam(value = "confirm-password") String confirmPassword) {
 
         if (registerService.validRegister(firstName, lastName, registerEmail, registerPassword, confirmPassword)) {
-            ModelAndView model = new ModelAndView("views/greeting");
-            return model;
+            return ("redirect:/greeting");
         } else {
-            ModelAndView model = new ModelAndView("views/register?error");
-            return model;
+            return ("redirect:/register?error");
         }
     }
 }
