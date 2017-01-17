@@ -25,11 +25,11 @@ public class RegisterController {
     public String register(
             @RequestParam(value = "first-name") String firstName,
             @RequestParam(value = "last-name") String lastName,
-            @RequestParam(value = "register-email") String registerEmail,
+            @RequestParam(value = "register-nickname") String registerNickname,
             @RequestParam(value = "register-password") String registerPassword,
             @RequestParam(value = "confirm-password") String confirmPassword) {
 
-        if (registerService.validRegister(firstName, lastName, registerEmail, registerPassword, confirmPassword)) {
+        if (registerService.validRegister(firstName, lastName, registerNickname, registerPassword, confirmPassword)) {
             return ("redirect:/greeting");
         } else {
             return ("redirect:/register");

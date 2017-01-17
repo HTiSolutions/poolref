@@ -18,7 +18,7 @@ public class User {
     private String surname;
 
     @NotNull
-    private String email;
+    private String nickname;
 
     @NotNull
     private String hashedpassword;
@@ -29,10 +29,10 @@ public class User {
         this.id = id;
     }
 
-    public User(String forename, String surname, String email, String hashedpassword) {
+    public User(String forename, String surname, String nickname, String hashedpassword) {
         this.forename = forename;
         this.surname = surname;
-        this.email = email;
+        this.nickname = nickname;
         this.hashedpassword = hashedpassword;
     }
 
@@ -48,8 +48,8 @@ public class User {
         return this.surname;
     }
 
-    public String getEmail() {
-        return this.email;
+    public String getNickname() {
+        return this.nickname;
     }
 
     public String getHashedpassword() {

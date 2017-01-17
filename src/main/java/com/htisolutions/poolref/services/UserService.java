@@ -21,15 +21,15 @@ public class UserService {
         return users;
     }
 
-    public Iterable<String> getUserEmails(){
+    public Iterable<String> getUserNicknames(){
         Iterable<User> users = getUsers();
-        ArrayList<String> userEmailList= new ArrayList<String>();
+        ArrayList<String> userNicknameList= new ArrayList<String>();
 
         for (User u : users) {
-            userEmailList.add(u.getEmail());
+            userNicknameList.add(u.getNickname());
         }
-        Iterable<String> userEmails = userEmailList;
-        return userEmails;
+        Iterable<String> userNicknames = userNicknameList;
+        return userNicknames;
     }
 
     public User getUserById(long id) {

@@ -16,10 +16,10 @@ public class LoginService {
         this.userDao = userDao;
     }
 
-    public Boolean validLogin(String email, String password){
+    public Boolean validLogin(String nickname, String password){
         Iterable <User> userList = userDao.findAll();
         for(User user: userList){
-            if (user.getEmail().equals(email)){
+            if (user.getNickname().equals(nickname)){
                 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
                 String hashedPassword = user.getHashedpassword();
                 if (passwordEncoder.matches(password,hashedPassword)){

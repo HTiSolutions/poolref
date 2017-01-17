@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" th:include = "layout :: page">
     <head th:fragment="head">
-        <title>Leaderboard</title>
+        <title>Results</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body th:fragment="content">
-        <h1>Welcome to the Leaderboard!</h1>
+        <h1>Welcome to the Results!</h1>
         <table class="table table-sm">
             <thead>
             <tr>
@@ -16,8 +16,8 @@
             <tbody>
             <th:block th:each="game : ${games}">
                 <tr>
-                    <td th:text="${userService.getUserById(game.getWinnerId()).getEmail()}"></td>
-                    <td th:text="${userService.getUserById(game.getLoserId()).getEmail()}"></td>
+                    <td th:text="${userService.getUserById(game.getWinnerId()).getNickname()}"></td>
+                    <td th:text="${userService.getUserById(game.getLoserId()).getNickname()}"></td>
                 </tr>
             </th:block>
             </tbody>

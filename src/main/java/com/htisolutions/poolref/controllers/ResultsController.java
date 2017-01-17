@@ -11,14 +11,14 @@ import com.htisolutions.poolref.services.GameService;
 import com.htisolutions.poolref.models.Game;
 
 @Controller
-@RequestMapping("/leaderboard")
-public class LeaderboardController {
+@RequestMapping("/results")
+public class ResultsController {
 
     private GameService gameService;
     private UserService userService;
 
     @Autowired
-    LeaderboardController(GameService gameService, UserService userService) {
+    ResultsController(GameService gameService, UserService userService) {
         this.gameService = gameService;
         this.userService = userService;
     }
@@ -28,7 +28,7 @@ public class LeaderboardController {
 
         Iterable<Game> games = gameService.getGames();
 
-        ModelAndView model = new ModelAndView("views/leaderboard");
+        ModelAndView model = new ModelAndView("views/results");
         model.addObject("games",games);
         model.addObject("userService", userService);
         return model;

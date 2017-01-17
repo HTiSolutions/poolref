@@ -27,14 +27,14 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(final String nickname) throws UsernameNotFoundException {
         try {
-            final User user = userDao.findByEmail(email);
+            final User user = userDao.findByNickname(nickname);
             if (user == null) {
-                throw new UsernameNotFoundException("No user found with username: " + email);
+                throw new UsernameNotFoundException("No user found with username: " + nickname);
             }
 
-            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getHashedpassword(), getGrantedAuthorities(getPrivileges()));
+            return new org.springframework.security.core.userdetails.User(user.getNickname(), user.getHashedpassword(), getGrantedAuthorities(getPrivileges()));
         } catch (final Exception e) {
             throw new RuntimeException(e);
         }

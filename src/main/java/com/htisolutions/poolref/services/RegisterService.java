@@ -16,12 +16,12 @@ public class RegisterService {
         this.userDao = userDao;
     }
 
-    public Boolean validRegister(String firstName, String lastName, String registerEmail, String registerPassword, String confirmPassword){
+    public Boolean validRegister(String firstName, String lastName, String registerNickname, String registerPassword, String confirmPassword){
         if (registerPassword.equals(confirmPassword)) {
             try {
                 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
                 String hashedPassword = passwordEncoder.encode(registerPassword);
-                User user = new User(firstName, lastName, registerEmail, hashedPassword);
+                User user = new User(firstName, lastName, registerNickname, hashedPassword);
                 userDao.save(user);
             }
             catch (Exception ex) {
