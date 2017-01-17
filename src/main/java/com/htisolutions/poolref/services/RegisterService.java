@@ -17,7 +17,7 @@ public class RegisterService {
     }
 
     public Boolean validRegister(String firstName, String lastName, String registerEmail, String registerPassword, String confirmPassword){
-        if (registerPassword.equals(confirmPassword)) {
+        if (registerPassword.equals(confirmPassword) && userDao.findByEmail(registerEmail) == null) {
             try {
                 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
                 String hashedPassword = passwordEncoder.encode(registerPassword);
