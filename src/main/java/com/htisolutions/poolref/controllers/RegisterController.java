@@ -4,6 +4,8 @@ import com.htisolutions.poolref.services.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
 
 @Controller
 @RequestMapping("/register")
@@ -32,7 +34,7 @@ public class RegisterController {
         if (registerService.validRegister(firstName, lastName, registerEmail, registerPassword, confirmPassword)) {
             return ("redirect:/greeting");
         } else {
-            return ("redirect:/register");
+            return ("redirect:/register?error");
         }
     }
 }

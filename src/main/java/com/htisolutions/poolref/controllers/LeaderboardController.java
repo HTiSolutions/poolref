@@ -11,7 +11,7 @@ import com.htisolutions.poolref.services.GameService;
 import com.htisolutions.poolref.models.Game;
 
 @Controller
-@RequestMapping("/leaderboard")
+@RequestMapping("/results")
 public class LeaderboardController {
 
     private GameService gameService;
