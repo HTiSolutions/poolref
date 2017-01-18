@@ -31,7 +31,7 @@ public class LeaderboardEntry{
     }
 
     private void setPercentage(){
-        percentage = wins / (wins + losses) * 100;
+        percentage = ((float) wins / ((float)wins + (float)losses)) * 100;
     }
 
     public Long getId() { return this.id; }

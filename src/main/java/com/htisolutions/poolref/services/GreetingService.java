@@ -45,17 +45,17 @@ public class GreetingService {
            @Override
            public int compare(LeaderboardEntry o1, LeaderboardEntry o2) {
                if (o1.getPercentage() < o2.getPercentage()){
-                   return -1;
+                   return 1;
                }
                else if (o1.getPercentage() > o2.getPercentage()){
-                   return 1;
+                   return -1;
                }
                else{
                    if (o1.getWins() < o2.getWins()){
-                       return -1;
+                       return 1;
                    }
                    else if (o1.getWins() > o2.getWins()){
-                       return 1;
+                       return -1;
                    }
                    else{
                        return 0;
@@ -77,12 +77,13 @@ public class GreetingService {
    }
 
    private List <LeaderboardEntry> removeUnusedUsers(List <LeaderboardEntry> leaderboard){
+       List<LeaderboardEntry> returnList = new ArrayList();
        for (LeaderboardEntry entry : leaderboard){
-           if(entry.getWins() + entry.getLosses() <= 0){
-               leaderboard.remove(entry);
+           if(entry.getWins() + entry.getLosses() > 0){
+               returnList.add(entry);
            }
        }
-       return leaderboard;
+       return returnList;
    }
 
 }
