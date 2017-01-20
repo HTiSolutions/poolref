@@ -1,7 +1,7 @@
 package com.htisolutions.poolref.controllers;
 
-import com.htisolutions.poolref.models.UserDao;
-import com.htisolutions.poolref.models.User;
+import com.htisolutions.poolref.entities.UserDao;
+import com.htisolutions.poolref.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

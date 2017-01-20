@@ -1,9 +1,6 @@
 package com.htisolutions.poolref.viewModels;
 
-import com.htisolutions.poolref.models.User;
-import com.htisolutions.poolref.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-
+import com.htisolutions.poolref.entities.User;
 
 public class SubmitScoreViewModel {
 

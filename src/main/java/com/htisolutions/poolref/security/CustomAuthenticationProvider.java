@@ -1,7 +1,7 @@
 package com.htisolutions.poolref.security;
 
-import com.htisolutions.poolref.models.UserDao;
-import com.htisolutions.poolref.models.User;
+import com.htisolutions.poolref.entities.UserDao;
+import com.htisolutions.poolref.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

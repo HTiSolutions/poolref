@@ -1,17 +1,12 @@
 package com.htisolutions.poolref.controllers;
 
-import com.htisolutions.poolref.models.Game;
-import com.htisolutions.poolref.models.User;
 import com.htisolutions.poolref.services.UserService;
 import com.htisolutions.poolref.services.GameService;
 import com.htisolutions.poolref.viewModels.SubmitScoreViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.Iterator;
 
 @Controller
 @RequestMapping("/submit-score")

@@ -1,13 +1,11 @@
 package com.htisolutions.poolref.services;
 
-import com.htisolutions.poolref.models.*;
+import com.htisolutions.poolref.entities.*;
+import com.htisolutions.poolref.viewModels.LeaderboardEntryViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class GreetingService {
@@ -21,69 +19,49 @@ public class GreetingService {
         this.userService = userService;
     }
 
-   public List<LeaderboardEntry> calculateLeaderboard (){
-       List <LeaderboardEntry> leaderboard = new ArrayList();
+   public List<LeaderboardEntryViewModel> calculateLeaderboard (){
+       HashMap<Long, LeaderboardEntryViewModel> leaderboard = new HashMap<>();
        Iterable<Game> games = gameService.getGames();
-       Iterable<User> users = userService.getUsers();
 
-       for (User user : users){
-           Long id = user.getId();
-           String nickname = user.getNickname();
-           leaderboard.add(new LeaderboardEntry(id, nickname));
-       }
-
-       for (Game game : games){
+       for (Game game : games) {
            Long winnerId = game.getWinnerId();
            Long loserId = game.getLoserId();
-           LeaderboardEntry winnerEntry = searchLeaderboardById(winnerId, leaderboard);
-           LeaderboardEntry loserEntry = searchLeaderboardById(loserId, leaderboard);
-           winnerEntry.addWin();
-           loserEntry.addLoss();
-       }
-       leaderboard = removeUnusedUsers(leaderboard);
-       Collections.sort(leaderboard, new Comparator<LeaderboardEntry>() {
-           @Override
-           public int compare(LeaderboardEntry o1, LeaderboardEntry o2) {
-               if (o1.getPercentage() < o2.getPercentage()){
-                   return 1;
-               }
-               else if (o1.getPercentage() > o2.getPercentage()){
-                   return -1;
-               }
-               else{
-                   if (o1.getWins() < o2.getWins()){
-                       return 1;
-                   }
-                   else if (o1.getWins() > o2.getWins()){
-                       return -1;
-                   }
-                   else{
-                       return 0;
-                   }
-               }
-           }
-       });
-       return leaderboard;
-   }
 
-   private LeaderboardEntry searchLeaderboardById (Long id, List <LeaderboardEntry> leaderboard){
-       for (LeaderboardEntry entry : leaderboard){
-           if (entry.getId() == id){
-               return entry;
+           LeaderboardEntryViewModel winnerEntry = leaderboard.get(winnerId);
+           LeaderboardEntryViewModel loserEntry = leaderboard.get(loserId);
+
+           if (!leaderboard.containsKey(winnerId)) {
+               User user = userService.getUserById(winnerId);
+               LeaderboardEntryViewModel entry = new LeaderboardEntryViewModel(user.getNickname());
+               entry.addWin();
+
+               leaderboard.put(user.getId(), entry);
+           } else if (!leaderboard.containsKey(loserId)) {
+               User user = userService.getUserById(winnerId);
+               LeaderboardEntryViewModel entry = new LeaderboardEntryViewModel(user.getNickname());
+               entry.addLoss();
+
+               leaderboard.put(user.getId(), entry);
+           } else {
+               winnerEntry.addWin();
+               loserEntry.addLoss();
            }
        }
 
-       return null;
-   }
+       List<LeaderboardEntryViewModel> leaderboardEntries = new ArrayList<LeaderboardEntryViewModel>(leaderboard.values());
 
-   private List <LeaderboardEntry> removeUnusedUsers(List <LeaderboardEntry> leaderboard){
-       List<LeaderboardEntry> returnList = new ArrayList();
-       for (LeaderboardEntry entry : leaderboard){
-           if(entry.getWins() + entry.getLosses() > 0){
-               returnList.add(entry);
-           }
+       Comparator<LeaderboardEntryViewModel> leaderboardComparator = Comparator
+               .comparing((LeaderboardEntryViewModel e)-> e.getPercentage())
+               .thenComparing(e -> e.getWins());
+
+       Collections.sort(leaderboardEntries, leaderboardComparator.reversed());
+
+       int position = 1;
+       for (LeaderboardEntryViewModel entry : leaderboardEntries) {
+           entry.setPosition(position);
+           position++;
        }
-       return returnList;
-   }
 
+       return leaderboardEntries;
+   }
 }

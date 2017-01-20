@@ -1,11 +1,10 @@
 package com.htisolutions.poolref.security;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-import com.htisolutions.poolref.models.User;
-import com.htisolutions.poolref.models.UserDao;
+import com.htisolutions.poolref.entities.User;
+import com.htisolutions.poolref.entities.UserDao;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 @Service("userDetailsService")

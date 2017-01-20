@@ -1,14 +1,12 @@
 package com.htisolutions.poolref.controllers;
 
-import com.htisolutions.poolref.models.UserDao;
 import com.htisolutions.poolref.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import com.htisolutions.poolref.services.GameService;
-import com.htisolutions.poolref.models.Game;
+import com.htisolutions.poolref.entities.Game;
 
 @Controller
 @RequestMapping("/results")
