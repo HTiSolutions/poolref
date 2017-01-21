@@ -1,8 +1,7 @@
 package com.htisolutions.poolref.controllers;
 
 import com.htisolutions.poolref.viewModels.LeaderboardEntryViewModel;
-import com.htisolutions.poolref.services.GreetingService;
-import com.htisolutions.poolref.services.UserService;
+import com.htisolutions.poolref.services.LeaderBoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
@@ -11,22 +10,21 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping("/greeting")
-public class GreetingController {
+@RequestMapping("/leaderboard")
+public class LeaderBoardController {
 
-    private GreetingService greetingService;
+    private LeaderBoardService leaderBoardService;
 
     @Autowired
-    GreetingController(GreetingService greetingService) {
-        this.greetingService = greetingService;
+    LeaderBoardController(LeaderBoardService leaderBoardService) {
+        this.leaderBoardService = leaderBoardService;
     }
 
     @RequestMapping()
     public ModelAndView index() {
+        List<LeaderboardEntryViewModel> leaderboardEntries = leaderBoardService.calculateLeaderboard();
 
-        List<LeaderboardEntryViewModel> leaderboardEntries = greetingService.calculateLeaderboard();
-
-        ModelAndView model = new ModelAndView("views/greeting");
+        ModelAndView model = new ModelAndView("views/leaderboard");
         model.addObject("leaderboardEntries", leaderboardEntries);
         return model;
     }

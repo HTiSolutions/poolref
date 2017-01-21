@@ -8,13 +8,13 @@ import org.springframework.stereotype.*;
 import java.util.*;
 
 @Service
-public class GreetingService {
+public class LeaderBoardService {
 
     private GameService gameService;
     private UserService userService;
 
     @Autowired
-    GreetingService(GameService gameService, UserService userService) {
+    LeaderBoardService(GameService gameService, UserService userService) {
         this.gameService = gameService;
         this.userService = userService;
     }

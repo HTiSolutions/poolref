@@ -1,31 +1,29 @@
-package com.htisolutions.poolref.controller;
+package com.htisolutions.poolref.controllers;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
-import com.htisolutions.poolref.controllers.RegisterController;
+import com.htisolutions.poolref.services.RegisterService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureMockMvc
+@WebMvcTest(RegisterController.class)
 @WithMockUser
 public class RegisterControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
-    @Autowired
-    private RegisterController registerController;
+    @MockBean
+    private RegisterService registerService;
 
     @Test
     public void validateFormName() throws Exception {

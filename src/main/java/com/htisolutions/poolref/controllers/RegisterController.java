@@ -32,7 +32,7 @@ public class RegisterController {
             @RequestParam(value = "confirm-password") String confirmPassword) {
 
         if (registerService.validRegister(firstName, lastName, registerNickname, registerPassword, confirmPassword)) {
-            return ("redirect:/greeting");
+            return ("redirect:/leaderboard");
         } else {
             return ("redirect:/register?error");
         }
