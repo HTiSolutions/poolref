@@ -1,8 +1,9 @@
 package com.htisolutions.poolref.services;
 
 import com.htisolutions.poolref.entities.*;
-import com.htisolutions.poolref.viewModels.LeaderboardEntryViewModel;
+import com.htisolutions.poolref.viewModels.LeaderBoardEntryViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.*;
 
 import java.util.*;
@@ -19,49 +20,51 @@ public class LeaderBoardService {
         this.userService = userService;
     }
 
-   public List<LeaderboardEntryViewModel> calculateLeaderboard (){
-       HashMap<Long, LeaderboardEntryViewModel> leaderboard = new HashMap<>();
+   public List<LeaderBoardEntryViewModel> calculateLeaderBoard(){
+       HashMap<Long, LeaderBoardEntryViewModel> leaderBoard = new HashMap<>();
        Iterable<Game> games = gameService.getGames();
 
        for (Game game : games) {
            Long winnerId = game.getWinnerId();
            Long loserId = game.getLoserId();
 
-           LeaderboardEntryViewModel winnerEntry = leaderboard.get(winnerId);
-           LeaderboardEntryViewModel loserEntry = leaderboard.get(loserId);
-
-           if (!leaderboard.containsKey(winnerId)) {
+           if (leaderBoard.containsKey(winnerId)) {
+               LeaderBoardEntryViewModel winnerEntry = leaderBoard.get(winnerId);
+               winnerEntry.addWin();
+           } else {
                User user = userService.getUserById(winnerId);
-               LeaderboardEntryViewModel entry = new LeaderboardEntryViewModel(user.getNickname());
+               LeaderBoardEntryViewModel entry = new LeaderBoardEntryViewModel(user.getNickname());
                entry.addWin();
 
-               leaderboard.put(user.getId(), entry);
-           } else if (!leaderboard.containsKey(loserId)) {
-               User user = userService.getUserById(winnerId);
-               LeaderboardEntryViewModel entry = new LeaderboardEntryViewModel(user.getNickname());
+               leaderBoard.put(user.getId(), entry);
+           }
+
+           if (leaderBoard.containsKey(loserId)) {
+               LeaderBoardEntryViewModel loserEntry = leaderBoard.get(loserId);
+               loserEntry.addLoss();
+           } else {
+               User user = userService.getUserById(loserId);
+               LeaderBoardEntryViewModel entry = new LeaderBoardEntryViewModel(user.getNickname());
                entry.addLoss();
 
-               leaderboard.put(user.getId(), entry);
-           } else {
-               winnerEntry.addWin();
-               loserEntry.addLoss();
+               leaderBoard.put(user.getId(), entry);
            }
        }
 
-       List<LeaderboardEntryViewModel> leaderboardEntries = new ArrayList<LeaderboardEntryViewModel>(leaderboard.values());
+       List<LeaderBoardEntryViewModel> leaderBoardEntries = new ArrayList<LeaderBoardEntryViewModel>(leaderBoard.values());
 
-       Comparator<LeaderboardEntryViewModel> leaderboardComparator = Comparator
-               .comparing((LeaderboardEntryViewModel e)-> e.getPercentage())
+       Comparator<LeaderBoardEntryViewModel> leaderBoardComparator = Comparator
+               .comparing((LeaderBoardEntryViewModel e)-> e.getPercentage())
                .thenComparing(e -> e.getWins());
 
-       Collections.sort(leaderboardEntries, leaderboardComparator.reversed());
+       Collections.sort(leaderBoardEntries, leaderBoardComparator.reversed());
 
        int position = 1;
-       for (LeaderboardEntryViewModel entry : leaderboardEntries) {
+       for (LeaderBoardEntryViewModel entry : leaderBoardEntries) {
            entry.setPosition(position);
            position++;
        }
 
-       return leaderboardEntries;
+       return leaderBoardEntries;
    }
 }
