@@ -1,25 +1,31 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" th:include = "layout :: page">
     <head th:fragment="head">
-        <title>Results</title>
+        <title>LeaderBoard</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body th:fragment="content">
-        <h1>Welcome to the Results!</h1>
+        <h1>Welcome to Pool Referee!</h1>
         <table class="table table-sm">
             <thead>
-            <tr>
-                <th>Winner</th>
-                <th>Loser</th>
-            </tr>
+                <tr>
+                    <th>Position</th>
+                    <th>Nickname</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Win Percentage</th>
+                </tr>
             </thead>
             <tbody>
-            <th:block th:each="game : ${games}">
-                <tr>
-                    <td th:text="${userService.getUserById(game.getWinnerId()).getEmail()}"></td>
-                    <td th:text="${userService.getUserById(game.getLoserId()).getEmail()}"></td>
-                </tr>
-            </th:block>
+                <th:block th:each="leaderboardEntry : ${leaderboardEntries}">
+                    <tr>
+                        <td th:text="${leaderboardEntry.position}"></td>
+                        <td th:text="${leaderboardEntry.nickname}"></td>
+                        <td th:text="${leaderboardEntry.wins}"></td>
+                        <td th:text="${leaderboardEntry.losses}"></td>
+                        <td th:text="${leaderboardEntry.percentage}"></td>
+                    </tr>
+                </th:block>
             </tbody>
         </table>
     </body>

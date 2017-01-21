@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:include = "layout :: page">
+    <head th:fragment="head">
+        <title>Results</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body th:fragment="content">
+        <div class="title text">
+            <h1>Results Table</h1>
+        </div>
+        <div class="text">
+            <h4>Below are all of the results of games played on the pool table:</h4>
+        </div>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Winner</th>
+                    <th>Loser</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="game : ${games}">
+                    <tr>
+                        <td></td>
+                        <td th:text="${userService.getUserById(game.getWinnerId()).getNickname()}"></td>
+                        <td th:text="${userService.getUserById(game.getLoserId()).getNickname()}"></td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+    </body>
+</html>

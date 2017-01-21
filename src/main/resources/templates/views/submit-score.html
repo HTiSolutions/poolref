@@ -4,43 +4,36 @@
         <title>Submit a Score</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
-
     <body th:fragment="content">
-
         <div class="title text-center">
             <h1>Submit a Score!</h1>
         </div>
         <div class="text-center">
-            <h2>Enter the nickname of the winner and loser</h2>
+            <h2>Select the nickname of the winner and loser</h2>
         </div>
         <form class="form-centre" action="#" th:action="@{/submit-score/submit-score}" th:object="${submitScore}" method="post">
             <div class="row">
-
                 <div class="col-xs-offset-2 col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="winner"> Winner </label>
                         <select id="winner" title="Select winner" class="form-control" th:field="${submitScore.winner}" name="winnerId">
-                            <option th:each="user : ${submitScore.users}" th:value="${user.id}" th:text="${user.email}"></option>
+                            <option th:each="user : ${submitScore.users}" th:value="${user.id}" th:text="${user.nickname}"></option>
                         </select>
-
                     </div>
                 </div>
-
                 <div class="col-xs-2 col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="loser"> Loser </label>
                         <select id="loser" title="Select loser" class="form-control" th:field="${submitScore.loser}" name="loserId">
-                            <option th:each="user : ${submitScore.users}" th:value="${user.id}" th:text="${user.email}"></option>
+                            <option th:each="user : ${submitScore.users}" th:value="${user.id}" th:text="${user.nickname}"></option>
                         </select>
-
                     </div>
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-xs-offset-3 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit Winner"/>
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit Game"/>
                     </div>
                 </div>
             </div>

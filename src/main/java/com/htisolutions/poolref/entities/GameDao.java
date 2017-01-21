@@ -1,4 +1,4 @@
-package com.htisolutions.poolref.models;
+package com.htisolutions.poolref.entities;
 
 import javax.transaction.Transactional;
 

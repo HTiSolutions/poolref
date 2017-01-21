@@ -1,7 +1,7 @@
 package com.htisolutions.poolref.controllers;
 
-import com.htisolutions.poolref.models.UserDao;
-import com.htisolutions.poolref.models.User;
+import com.htisolutions.poolref.entities.UserDao;
+import com.htisolutions.poolref.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,11 +31,11 @@ public class UserController {
     }
 
     @RequestMapping("/create")
-    public ModelAndView create(String forename, String surname, String email, String hashedpassword) {
+    public ModelAndView create(String forename, String surname, String nickname, String hashedpassword) {
 
         String userId = "";
         try {
-            User user = new User(forename, surname, email, hashedpassword);
+            User user = new User(forename, surname, nickname, hashedpassword);
             userDao.save(user);
             userId = String.valueOf(user.getId());
         }
