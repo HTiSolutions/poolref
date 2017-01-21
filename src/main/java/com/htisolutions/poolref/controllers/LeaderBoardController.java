@@ -1,6 +1,6 @@
 package com.htisolutions.poolref.controllers;
 
-import com.htisolutions.poolref.viewModels.LeaderboardEntryViewModel;
+import com.htisolutions.poolref.viewModels.LeaderBoardEntryViewModel;
 import com.htisolutions.poolref.services.LeaderBoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
@@ -22,7 +22,7 @@ public class LeaderBoardController {
 
     @RequestMapping()
     public ModelAndView index() {
-        List<LeaderboardEntryViewModel> leaderboardEntries = leaderBoardService.calculateLeaderboard();
+        List<LeaderBoardEntryViewModel> leaderboardEntries = leaderBoardService.calculateLeaderBoard();
 
         ModelAndView model = new ModelAndView("views/leaderboard");
         model.addObject("leaderboardEntries", leaderboardEntries);

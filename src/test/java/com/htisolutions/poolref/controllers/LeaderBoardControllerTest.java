@@ -5,7 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import com.htisolutions.poolref.services.LeaderBoardService;
-import com.htisolutions.poolref.viewModels.LeaderboardEntryViewModel;
+import com.htisolutions.poolref.viewModels.LeaderBoardEntryViewModel;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,15 +32,15 @@ public class LeaderBoardControllerTest {
 
     @Test
     public void validateFormName() throws Exception {
-        List<LeaderboardEntryViewModel> leaderboard = new ArrayList<>();
-        LeaderboardEntryViewModel entry = new LeaderboardEntryViewModel("bm15731");
+        List<LeaderBoardEntryViewModel> leaderboard = new ArrayList<>();
+        LeaderBoardEntryViewModel entry = new LeaderBoardEntryViewModel("bm15731");
         entry.addWin();
         entry.addLoss();
         entry.addWin();
         entry.setPosition(1);
         leaderboard.add(entry);
 
-        given(leaderBoardService.calculateLeaderboard()).willReturn(leaderboard);
+        given(leaderBoardService.calculateLeaderBoard()).willReturn(leaderboard);
 
         this.mvc.perform(MockMvcRequestBuilders.get("/leaderboard/"))
                 .andExpect(status().isOk())

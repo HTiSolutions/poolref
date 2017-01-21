@@ -1,6 +1,6 @@
 package com.htisolutions.poolref.viewModels;
 
-public class LeaderboardEntryViewModel {
+public class LeaderBoardEntryViewModel {
 
     private Integer position;
 
@@ -12,7 +12,7 @@ public class LeaderboardEntryViewModel {
 
     private Float percentage;
 
-    public LeaderboardEntryViewModel(String nickname){
+    public LeaderBoardEntryViewModel(String nickname){
         this.nickname = nickname;
         wins = 0;
         losses = 0;
