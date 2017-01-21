@@ -8,6 +8,8 @@ import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
+
 @Controller
 @RequestMapping("/submit-score")
 public class SubmitScoreController {
@@ -33,7 +35,7 @@ public class SubmitScoreController {
     @RequestMapping(value = "/submit-score", method = RequestMethod.POST)
     public String submit(@ModelAttribute(value="submitScore") SubmitScoreViewModel model) {
 
-        gameService.gameSave(model.getWinner().getId(), model.getLoser().getId());
+        gameService.gameSave(new Date(), model.getWinner().getId(), model.getLoser().getId());
         return ("redirect:/submit-score");
     }
 
