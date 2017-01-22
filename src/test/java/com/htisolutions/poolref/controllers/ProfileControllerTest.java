@@ -20,11 +20,11 @@ public class ProfileControllerTest {
     @Autowired
     private MockMvc mvc;
 
-    @Test
+    /*@Test
     public void validateFormName() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/profile/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("views/profile"));
-    }
+    }*/
 
 }
