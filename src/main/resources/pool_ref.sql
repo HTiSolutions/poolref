@@ -5,13 +5,6 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema pool_ref
--- -----------------------------------------------------
-
--- -----------------------------------------------------
 -- Schema pool_ref
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `pool_ref` DEFAULT CHARACTER SET utf8 ;
@@ -29,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `pool_ref`.`user` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `Id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB
-AUTO_INCREMENT = 12
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -56,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `pool_ref`.`game` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
 
 
