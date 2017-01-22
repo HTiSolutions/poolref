@@ -1,64 +1,52 @@
 package com.htisolutions.poolref.viewModels;
 
 import com.htisolutions.poolref.entities.Game;
+import com.htisolutions.poolref.entities.User;
+import com.htisolutions.poolref.models.GameEntry;
+import com.htisolutions.poolref.models.UserStat;
 
 import java.util.List;
 
 public class ProfileViewModel {
 
-    private String firstName;
+    private User user;
 
-    private String lastName;
+    private UserStat stat;
 
-    private String nickname;
+    private List <GameEntry> gamesInvolved;
 
-    private Integer gamesPlayed;
-
-    private Integer wins;
-
-    private Integer losses;
-
-    private Float percentage;
-
-    private List <Game> gamesInvolved;
-
-    public ProfileViewModel(String firstName, String lastName, String nickname, Integer gamesPlayed, Integer wins, Integer losses, Float percentage, List<Game> gamesInvolved){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.nickname = nickname;
-        this.gamesPlayed = gamesPlayed;
-        this.wins = wins;
-        this.losses = losses;
-        this.percentage = percentage;
+    public ProfileViewModel(User user, UserStat stat, List<GameEntry> gamesInvolved){
+        this.user = user;
+        this.stat = stat;
         this.gamesInvolved = gamesInvolved;
     }
 
-    public String getFirstName(){ return ("First name: " + firstName); }
+    public String getFirstName(){ return ("First name: " + user.getForename()); }
 
-    public String getLastName(){ return ("Last name: " + lastName); }
+    public String getLastName(){ return ("Last name: " + user.getSurname()); }
 
-    public String getNickname(){ return ("Nickname: " + nickname); }
+    public String getNickname(){ return ("Nickname: " + user.getNickname()); }
 
     public String getGamesPlayed(){
-        String text = String.valueOf(gamesPlayed);
+        String text = String.valueOf(stat.getGamesPlayed());
         return ("Games played: " + text);
     }
 
     public String getWins(){
-        String text = String.valueOf(wins);
+        String text = String.valueOf(stat.getWins());
         return ("Number of wins: " + text);
     }
 
     public String getLosses(){
-        String text = String.valueOf(losses);
+        String text = String.valueOf(stat.getLosses());
         return ("Number of losses: " + text);
     }
 
     public String getPercentage(){
-        String text = String.valueOf(percentage);
+        String text = String.valueOf(stat.getPercentage());
         return ("Win percentage: " + text + "%");
     }
 
-    public List <Game> getGamesInvolved(){return gamesInvolved;}
+    public List <GameEntry> getGamesInvolved(){return gamesInvolved;}
 
 }

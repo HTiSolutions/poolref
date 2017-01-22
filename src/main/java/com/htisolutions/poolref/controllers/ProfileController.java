@@ -18,12 +18,10 @@ import java.security.Principal;
 public class ProfileController {
 
     private ProfileService profileService;
-    private UserService userService;
 
     @Autowired
-    ProfileController(ProfileService profileService, UserService userService) {
+    ProfileController(ProfileService profileService) {
         this.profileService = profileService;
-        this.userService = userService;
     }
 
     @RequestMapping()
@@ -31,11 +29,9 @@ public class ProfileController {
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         ProfileViewModel profile = profileService.generateProfile(user);
-        System.out.println(profile.getFirstName());
 
         ModelAndView model = new ModelAndView("views/profile");
         model.addObject("profile", profile);
-        model.addObject("userService", userService);
         return model;
     }
 

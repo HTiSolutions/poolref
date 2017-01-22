@@ -1,8 +1,6 @@
-package com.htisolutions.poolref.iDontKnowWhereToPutThese;
+package com.htisolutions.poolref.models;
 
 import com.htisolutions.poolref.entities.Game;
-import com.htisolutions.poolref.services.GameService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class UserStat {
 

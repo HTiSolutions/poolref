@@ -2,7 +2,8 @@ package com.htisolutions.poolref.services;
 
 import com.htisolutions.poolref.entities.Game;
 import com.htisolutions.poolref.entities.User;
-import com.htisolutions.poolref.iDontKnowWhereToPutThese.UserStat;
+import com.htisolutions.poolref.models.GameEntry;
+import com.htisolutions.poolref.models.UserStat;
 import com.htisolutions.poolref.viewModels.ProfileViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,29 +16,25 @@ public class ProfileService {
 
     private GameService gameService;
 
+    private UserService userService;
+
     @Autowired
-    ProfileService(GameService gameService) {
+    ProfileService(GameService gameService, UserService userService) {
         this.gameService = gameService;
+        this.userService = userService;
     }
     public ProfileViewModel generateProfile (User user){
-        String firstName = user.getForename();
-        String lastName = user.getSurname();
-        String nickname = user.getNickname();
         UserStat stat = new UserStat(user.getId(), gameService.getGames());
-        Integer gamesPlayed = stat.getGamesPlayed();
-        Integer wins = stat.getWins();
-        Integer losses = stat.getLosses();
-        Float percentage = stat.getPercentage();
-        List<Game> gamesInvolved = calculateGamesInvolved(user.getId());
-        return new ProfileViewModel(firstName, lastName, nickname, gamesPlayed, wins, losses, percentage, gamesInvolved);
+        List<GameEntry> gamesInvolved = calculateGamesInvolved(user);
+        return new ProfileViewModel(user, stat, gamesInvolved);
     }
 
-    private List <Game> calculateGamesInvolved(Long id){
+    private List <GameEntry> calculateGamesInvolved(User user){
         Iterable <Game> games = gameService.getGames();
-        List <Game> gamesInvolved = new ArrayList();
+        List <GameEntry> gamesInvolved = new ArrayList();
         for (Game game : games){
-            if (game.getWinnerId() == id || game.getLoserId() == id){
-                gamesInvolved.add(game);
+            if (game.getWinnerId() == user.getId() || game.getLoserId() == user.getId()){
+                gamesInvolved.add(new GameEntry(userService, game));
             }
         }
         return gamesInvolved;

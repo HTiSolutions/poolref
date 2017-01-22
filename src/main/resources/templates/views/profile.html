@@ -26,9 +26,9 @@
         <tbody>
         <th:block th:each="game : ${profile.getGamesInvolved()}">
             <tr>
-                <td></td>
-                <td th:text="${userService.getUserById(game.getWinnerId()).getNickname()}"></td>
-                <td th:text="${userService.getUserById(game.getLoserId()).getNickname()}"></td>
+                <td th:text="${game.getDate()}"></td>
+                <td th:text="${game.getWinner()}"></td>
+                <td th:text="${game.getLoser()}"></td>
             </tr>
         </th:block>
         </tbody>
