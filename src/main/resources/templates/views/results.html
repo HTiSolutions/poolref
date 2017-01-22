@@ -17,11 +17,11 @@
                 </tr>
             </thead>
             <tbody>
-                <th:block th:each="game : ${games}">
+                <th:block th:each="result : ${results}">
                     <tr>
-                        <td></td>
-                        <td th:text="${userService.getUserById(game.getWinnerId()).getNickname()}"></td>
-                        <td th:text="${userService.getUserById(game.getLoserId()).getNickname()}"></td>
+                        <td th:text="${result.date}"></td>
+                        <td th:text="${result.winnerNickname}"></td>
+                        <td th:text="${result.loserNickname}"></td>
                     </tr>
                 </th:block>
             </tbody>
