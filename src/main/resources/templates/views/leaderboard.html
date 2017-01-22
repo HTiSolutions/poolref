@@ -19,11 +19,11 @@
             <tbody>
                 <th:block th:each="leaderboardEntry : ${leaderboardEntries}">
                     <tr>
-                        <td th:text="${leaderboardEntry.position}"></td>
-                        <td th:text="${leaderboardEntry.nickname}"></td>
-                        <td th:text="${leaderboardEntry.wins}"></td>
-                        <td th:text="${leaderboardEntry.losses}"></td>
-                        <td th:text="${leaderboardEntry.percentage}"></td>
+                        <td th:text="${leaderboardEntry.getPosition()}"></td>
+                        <td th:text="${leaderboardEntry.getNickname()}"></td>
+                        <td th:text="${leaderboardEntry.getWins()}"></td>
+                        <td th:text="${leaderboardEntry.getLosses()}"></td>
+                        <td th:text="${leaderboardEntry.getPercentage()}"></td>
                     </tr>
                 </th:block>
             </tbody>
