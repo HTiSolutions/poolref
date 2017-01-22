@@ -1,6 +1,8 @@
 package com.htisolutions.poolref.controllers;
 
+import com.htisolutions.poolref.services.ResultsService;
 import com.htisolutions.poolref.services.UserService;
+import com.htisolutions.poolref.viewModels.ResultEntryViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
@@ -12,23 +14,20 @@ import com.htisolutions.poolref.entities.Game;
 @RequestMapping("/results")
 public class ResultsController {
 
-    private GameService gameService;
-    private UserService userService;
+    private ResultsService resultsService;
 
     @Autowired
-    ResultsController(GameService gameService, UserService userService) {
-        this.gameService = gameService;
-        this.userService = userService;
+    ResultsController(ResultsService resultsService) {
+        this.resultsService = resultsService;
     }
 
     @RequestMapping()
     public ModelAndView index() {
 
-        Iterable<Game> games = gameService.getGames();
+        Iterable<ResultEntryViewModel> results = resultsService.getResults();
 
         ModelAndView model = new ModelAndView("views/results");
-        model.addObject("games",games);
-        model.addObject("userService", userService);
+        model.addObject("results", results);
         return model;
     }
 

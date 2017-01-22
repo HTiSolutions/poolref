@@ -1,8 +1,11 @@
 package com.htisolutions.poolref.entities;
 
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity
 public class Game {
@@ -10,6 +13,10 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotNull
+    @Column(name="date")
+    private Date date;
 
     @NotNull
     @Column(name="winner_id")
@@ -25,13 +32,18 @@ public class Game {
         this.id = id;
     }
 
-    public Game(Long winnerId, Long loserId) {
+    public Game(Date date, Long winnerId, Long loserId) {
+        this.date = date;
         this.winnerId = winnerId;
         this.loserId = loserId;
     }
 
     public Long getId() {
         return this.id;
+    }
+
+    public Date getDate() {
+        return this.date;
     }
 
     public Long getWinnerId() {
