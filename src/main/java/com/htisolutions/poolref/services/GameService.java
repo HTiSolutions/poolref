@@ -17,13 +17,17 @@ public class GameService {
         this.gameDao = gameDao;
     }
 
-    public void gameSave(Date date, Long winnerId, Long loserId) {
-        try {
-            Game game = new Game(date, winnerId, loserId);
-            gameDao.save(game);
-        } catch (Exception ex) {
-            //"Error saving the game: " + ex.toString();
+    public Boolean gameSave(Date date, Long winnerId, Long loserId) {
+        if(winnerId != loserId) {
+            try {
+                Game game = new Game(date, winnerId, loserId);
+                gameDao.save(game);
+            } catch (Exception ex) {
+                //"Error saving the game: " + ex.toString();
+            }
+            return true;
         }
+        return false;
     }
 
     public Iterable<Game> getGames() {
