@@ -35,8 +35,11 @@ public class SubmitScoreController {
     @RequestMapping(value = "/submit-score", method = RequestMethod.POST)
     public String submit(@ModelAttribute(value="submitScore") SubmitScoreViewModel model) {
 
-        gameService.gameSave(new Date(), model.getWinner().getId(), model.getLoser().getId());
-        return ("redirect:/submit-score");
+        if(gameService.gameSave(new Date(), model.getWinner().getId(), model.getLoser().getId())) {
+            return ("redirect:/submit-score");
+        } else {
+            return ("redirect:/submit-score?error");
+        }
     }
 
 }
