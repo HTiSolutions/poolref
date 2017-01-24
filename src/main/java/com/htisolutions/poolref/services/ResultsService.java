@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -39,7 +41,7 @@ public class ResultsService {
             );
             results.add(viewModel);
         }
-
+        Collections.reverse(results);
         return results;
     }
 
