@@ -18,11 +18,9 @@ public class GameEntry {
 
     private String date;
 
-    public GameEntry(UserService userService, Game game){
-        Long winnerId = game.getWinnerId();
-        Long loserId = game.getLoserId();
-        winner = userService.getUserById(winnerId);
-        loser = userService.getUserById(loserId);
+    public GameEntry(User winner, User loser, Game game){
+        this.winner = winner;
+        this.loser = loser;
         date = new SimpleDateFormat("dd MMM yyyy  HH:mm").format(game.getDate());
     }
 

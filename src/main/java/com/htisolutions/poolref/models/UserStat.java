@@ -1,8 +1,11 @@
 package com.htisolutions.poolref.models;
 
 import com.htisolutions.poolref.entities.Game;
+import com.htisolutions.poolref.entities.User;
 
 public class UserStat {
+
+    private User user;
 
     private Integer wins;
 
@@ -12,14 +15,15 @@ public class UserStat {
 
     private Float percentage;
 
-    public UserStat(Long userId, Iterable <Game> games){
+    public UserStat(User user, Iterable <Game> games){
+        this.user = user;
         wins = 0;
         losses = 0;
         for (Game game : games){
-            if (game.getWinnerId() == userId){
+            if (game.getWinnerId() == user.getId()){
                 wins++;
             }
-            if (game.getLoserId() == userId){
+            if (game.getLoserId() == user.getId()){
                 losses++;
             }
         }
@@ -30,7 +34,7 @@ public class UserStat {
             percentage = 0.0f;
         }
     }
-
+    public User getUser(){return user;}
     public Integer getWins(){ return wins;}
 
     public Integer getLosses(){ return losses;}

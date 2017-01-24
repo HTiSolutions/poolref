@@ -24,7 +24,7 @@ public class ProfileService {
         this.userService = userService;
     }
     public ProfileViewModel generateProfile (User user){
-        UserStat stat = new UserStat(user.getId(), gameService.getGames());
+        UserStat stat = new UserStat(user, gameService.getGames());
         List<GameEntry> gamesInvolved = calculateGamesInvolved(user);
         return new ProfileViewModel(user, stat, gamesInvolved);
     }
@@ -34,7 +34,7 @@ public class ProfileService {
         List <GameEntry> gamesInvolved = new ArrayList();
         for (Game game : games){
             if (game.getWinnerId() == user.getId() || game.getLoserId() == user.getId()){
-                gamesInvolved.add(new GameEntry(userService, game));
+                gamesInvolved.add(new GameEntry(userService.getUserById(game.getWinnerId()),userService.getUserById(game.getLoserId()), game));
             }
         }
         return gamesInvolved;
