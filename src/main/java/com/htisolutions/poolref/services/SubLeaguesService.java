@@ -10,24 +10,24 @@ import java.util.*;
 
 
 @Service
-public class SubLeagueService {
+public class SubLeaguesService {
 
     private GameService gameService;
     private UserService userService;
 
     @Autowired
-    SubLeagueService(GameService gameService, UserService userService) {
+    SubLeaguesService(GameService gameService, UserService userService) {
         this.gameService = gameService;
         this.userService = userService;
     }
 
-    public Iterable <SubLeague> getSubLeagues(){
+    public Iterable <SubLeague> getSubLeaguesByUser(User user){
         Iterable<SubLeague> subLeagues = null;
         return subLeagues;
     }
 
-    public List<List<LeaderBoardEntryViewModel>> calculateSubLeageues(){
-        Iterable<SubLeague>subLeagues = getSubLeagues();
+    public List<List<LeaderBoardEntryViewModel>> calculateSubLeageues(User user){
+        Iterable<SubLeague>subLeagues = getSubLeaguesByUser(user);
         List<List<LeaderBoardEntryViewModel>> subleagueTables = new ArrayList<>();
         for (SubLeague subLeague : subLeagues){
             subleagueTables.add(calculateSubLeageue(subLeague));
