@@ -20,12 +20,16 @@ Deployment (Setting up the box)
     This message shows that your installation appears to be working correctly."
 
 8. Install a mySql server docker `sudo docker pull mysql/mysql-server`
-9. Start a server instance `sudo docker run --name pool_ref -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server`
-10. Run sql initialisation script
+9. Place the .sql startup script in the docker-entrypoint-initdb.d directory in the root directory.
+10. Start a server instance `sudo docker run -p 127.0.0.1:3306:3306 --name pool_ref -e MYSQL_ROOT_PASSWORD=root -d -v /mysql-data:/var/lib/mysql -v /docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d mysql/mysql-server
+10.5. Change mysql permissions:
+		sudo docker exec -ti pool_ref mysql -u root -p
+		grant all privileges on *.* to 'root'@'%' identified by 'password goes here' with grant option;
+		flush privileges;
 
 11. Install java `sudo yum install java`
 12. Find latest version of java jdk `yum search java | grep 'java-'`
 13. Install latest java JDK version`sudo yum install java-1.8.0-openjdk*`
 14. Change gradlew privileges `sudo chmod +x gradlew`
 15. Build latest version of web application `./gradlew clean build`
-16. Run web application `gradle bootrun`
+16. Run web application `./gradlew bootrun`
