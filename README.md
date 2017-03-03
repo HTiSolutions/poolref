@@ -22,6 +22,7 @@ Deployment (Setting up the box)
 8. Install a mySql server docker `sudo docker pull mysql/mysql-server`
 9. Place the .sql startup script in the docker-entrypoint-initdb.d directory in the root directory.
 10. Start a server instance `sudo docker run -p 127.0.0.1:3306:3306 --name pool_ref -e MYSQL_ROOT_PASSWORD=root -d -v /mysql-data:/var/lib/mysql -v /docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d mysql/mysql-server
+
 10.5. Change mysql permissions:
 		sudo docker exec -ti pool_ref mysql -u root -p
 		grant all privileges on *.* to 'root'@'%' identified by 'password goes here' with grant option;
