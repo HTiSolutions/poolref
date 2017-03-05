@@ -7,6 +7,7 @@
     <body th:fragment="content">
         <div class="title text-center">
             <h1>Profile</h1>
+            <a href="create-sub-league.html"><input type="submit" class="btn btn-primary" style="float:right" value="Create Sub League"/></a>
         </div>
         <p th:text="${profile.getFirstName()}"></p>
         <p th:text="${profile.getLastName()}"></p>
