@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:include = "layout :: page">
+    <head th:fragment="head">
+        <title>Results</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body th:fragment="content">
+        <div class="title text-center">
+            <h1>Results Table</h1>
+        </div>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Winner</th>
+                    <th>Loser</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="result : ${results}">
+                    <tr>
+                        <td th:text="${result.date}"></td>
+                        <td th:text="${result.winnerNickname}"></td>
+                        <td th:text="${result.loserNickname}"></td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+    </body>
+</html>

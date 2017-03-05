@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body th:fragment="navbar">
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand">Pool Referee</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/leaderboard">Home</a></li>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/results">Results</a></li>
+                    <li><a href="/submit-score">Submit a Score</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
+                </ul>
+            </div>
+        </nav>
+    </body>
+</html>

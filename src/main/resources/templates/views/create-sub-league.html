@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:include = "layout :: page">
+    <head th:fragment="head">
+        <title>Create a Sub League</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body th:fragment="content">
+        <div class="title text-center">
+            <h1>Create a Sub League</h1>
+        </div>
+        <div class="text-center">
+            <h4>Select the players for your subleague</h4>
+        </div>
+        <form class="form-centre" action="#" th:action="@{/create-sub-league/create-sub-league}" th:object="${createSubLeague}" method="put">
+            <div class="row">
+                <div class="col-xs-offset-2 col-sm-8 col-md-8">
+                    <div class="form-group">
+                        <select id="user" title="Select users" class="form-control" th:field="${createSubLeague.users}">
+                            <option th:each="user : ${createSubLeague.users}" th:value="${user.id}" th:text="${user.nickname}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-sm-2 col-md-2">
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Add"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-offset-3 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Create"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

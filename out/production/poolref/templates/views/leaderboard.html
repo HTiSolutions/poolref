@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:include = "layout :: page">
+    <head th:fragment="head">
+        <title>LeaderBoard</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body th:fragment="content">
+        <h1>Welcome to Pool Referee!</h1>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Position</th>
+                    <th>Nickname</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Win Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="leaderboardEntry : ${leaderboardEntries}">
+                    <tr>
+                        <td th:text="${leaderboardEntry.getPosition()}"></td>
+                        <td th:text="${leaderboardEntry.getNickname()}"></td>
+                        <td th:text="${leaderboardEntry.getWins()}"></td>
+                        <td th:text="${leaderboardEntry.getLosses()}"></td>
+                        <td th:text="${leaderboardEntry.getPercentage()}"></td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+    </body>
+</html>
