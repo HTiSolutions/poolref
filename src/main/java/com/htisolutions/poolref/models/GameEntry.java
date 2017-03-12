@@ -7,9 +7,6 @@ import com.htisolutions.poolref.services.UserService;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by george on 22/01/2017.
- */
 public class GameEntry {
 
     private User winner;

@@ -1,7 +1,6 @@
 package com.htisolutions.poolref.controllers;
 
 import com.htisolutions.poolref.entities.User;
-import com.htisolutions.poolref.services.ProfileService;
 import com.htisolutions.poolref.services.SubLeaguesService;
 import com.htisolutions.poolref.viewModels.LeaderBoardEntryViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class SubLeaguesController {
     @RequestMapping()
     public ModelAndView index() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<List<LeaderBoardEntryViewModel>> subLeagues = subLeaguesService.calculateSubLeageues(user);
+        List<List<LeaderBoardEntryViewModel>> subLeagues = subLeaguesService.calculateSubLeagues(user);
         ModelAndView model = new ModelAndView("views/sub-leagues");
         model.addObject("sub-leagues",subLeagues);
         return model;

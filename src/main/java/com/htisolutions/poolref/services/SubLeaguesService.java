@@ -1,7 +1,8 @@
 package com.htisolutions.poolref.services;
 import com.htisolutions.poolref.entities.Game;
-import com.htisolutions.poolref.entities.SubLeague;
 import com.htisolutions.poolref.entities.User;
+import com.htisolutions.poolref.models.LeagueModel;
+import com.htisolutions.poolref.repositories.UserLeagueMappingRepository;
 import com.htisolutions.poolref.viewModels.LeaderBoardEntryViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,33 +14,28 @@ import java.util.*;
 public class SubLeaguesService {
 
     private GameService gameService;
-    private UserService userService;
+    private UserLeagueMappingRepository userLeagueMappingRepository;
 
     @Autowired
-    SubLeaguesService(GameService gameService, UserService userService) {
+    SubLeaguesService(GameService gameService, UserLeagueMappingRepository userLeagueMappingRepository) {
         this.gameService = gameService;
-        this.userService = userService;
+        this.userLeagueMappingRepository = userLeagueMappingRepository;
     }
 
-    public Iterable <SubLeague> getSubLeaguesByUser(User user){
-        Iterable<SubLeague> subLeagues = null;
-        return subLeagues;
-    }
 
-    public List<List<LeaderBoardEntryViewModel>> calculateSubLeageues(User user){
-        Iterable<SubLeague>subLeagues = getSubLeaguesByUser(user);
-        List<List<LeaderBoardEntryViewModel>> subleagueTables = new ArrayList<>();
-        for (SubLeague subLeague : subLeagues){
-            subleagueTables.add(calculateSubLeageue(subLeague));
+    public List<List<LeaderBoardEntryViewModel>> calculateSubLeagues(User user){
+        Iterable<LeagueModel>subLeagues = userLeagueMappingRepository.findAllLeaguesByUserId(user.getId());
+        List<List<LeaderBoardEntryViewModel>> subLeagueTables = new ArrayList<>();
+        for (LeagueModel subLeague : subLeagues){
+            subLeagueTables.add(calculateSubLeague(subLeague));
         }
-        return subleagueTables;
+        return subLeagueTables;
     }
 
-    private List<LeaderBoardEntryViewModel> calculateSubLeageue(SubLeague subLeague){
-        Iterable<User>usersInLeague = subLeague.getUsersInLeague();
+    private List<LeaderBoardEntryViewModel> calculateSubLeague(LeagueModel subLeague){
         HashMap<Long, LeaderBoardEntryViewModel> subLeagueTable = new HashMap<>();
         Iterable<Game> games = gameService.getGames();
-        for (User user: usersInLeague){
+        for (User user: subLeague.getUsers()){
             LeaderBoardEntryViewModel entry = new LeaderBoardEntryViewModel(user.getNickname());
             subLeagueTable.put(user.getId(), entry);
         }
