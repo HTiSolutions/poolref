@@ -1,7 +1,6 @@
 package com.htisolutions.poolref.repositories;
 
 import com.htisolutions.poolref.entities.*;
-import com.htisolutions.poolref.models.LeagueModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -30,15 +29,13 @@ public class UserLeagueMappingRepository {
         this.userLeagueMappingDao = userLeagueMappingDao;
     }
 
-    public Iterable<LeagueModel> findAllLeaguesByUserId(Long userId){
-        List<LeagueModel> leagues = new ArrayList<>();
+    public Iterable<League> findAllLeaguesByUserId(Long userId){
+        List<League> leagues = new ArrayList<>();
         Iterable<UserLeagueMapping> mappings = userLeagueMappingDao.findAllByUserId(userId);
 
         for (UserLeagueMapping mapping : mappings) {
             League league = leagueDao.findOne(mapping.getLeagueId());
-            Iterable<User> users = findAllUsersByLeagueId(league.getId());
-
-            leagues.add(new LeagueModel(league, users));
+            leagues.add(league);
         }
 
         return leagues;
@@ -56,12 +53,12 @@ public class UserLeagueMappingRepository {
         return users;
     }
 
-    public void saveLeague(LeagueModel leagueModel) {
-        League league = leagueDao.save(leagueModel.getLeague());
+    public void saveLeague(League league, List<Long> userIds) {
+        leagueDao.save(league);
 
         List<UserLeagueMapping> mappings = new ArrayList<>();
-        for (User user : leagueModel.getUsers()) {
-            mappings.add(new UserLeagueMapping(league.getId(), user.getId()));
+        for (Long userId : userIds) {
+            mappings.add(new UserLeagueMapping(league.getId(), userId));
         }
 
         userLeagueMappingDao.save(mappings);
