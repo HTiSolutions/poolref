@@ -8,18 +8,6 @@ public class RegisterViewModel {
     private String registerPassword;
     private String confirmPassword;
 
-//    public RegisterViewModel(String firstName,
-//                             String lastName,
-//                             String registerNickname,
-//                             String registerPassword,
-//                             String confirmPassword) {
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.registerNickname = registerNickname;
-//        this.registerPassword = registerPassword;
-//        this.confirmPassword = confirmPassword;
-//    }
-
     public String getConfirmPassword() {
         return confirmPassword;
     }
