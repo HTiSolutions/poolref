@@ -28,7 +28,11 @@
                     <div class="row">
                         <div class="col-xs-offset-3 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <input name="question" type="text" class="form-control input-lg" placeholder="Question" required="required" th:field="*{securityQuestion}"/>
+                                <div class="form-group">
+                                    <select id="question" title="Select question" class="form-control" th:field="${securityQuestions.questionId}" name="questionId">
+                                        <option th:each="securityQuestion : ${securityQuestions.getSecurityQuestion()}" th:value="${securityQuestion.id}" th:text="${securityQuestion.question}"></option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>

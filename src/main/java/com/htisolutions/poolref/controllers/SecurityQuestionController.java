@@ -29,19 +29,20 @@ public class SecurityQuestionController {
 
     @RequestMapping()
     public ModelAndView index() {
-        ModelAndView modelAndView = new ModelAndView("views/security-question");
         SecurityQuestionViewModel securityQuestionViewModel = new SecurityQuestionViewModel();
+        securityQuestionViewModel.setSecurityQuestions(securityQuestionService.getOptions());
+        ModelAndView modelAndView = new ModelAndView("views/security-question", "securityQuestions", securityQuestionViewModel);
         modelAndView.addObject("securityQuestionViewModel", securityQuestionViewModel);
         return modelAndView;
     }
 
     @RequestMapping(value="/security-question", method=RequestMethod.POST)
     public String register(@ModelAttribute(value="securityQuestionViewModel") SecurityQuestionViewModel securityQuestionViewModel) {
-        String question = securityQuestionViewModel.getSecurityQuestion();
         String answer = securityQuestionViewModel.getAnswer();
         String confirmAnswer = securityQuestionViewModel.getConfirmAnswer();
+        long questionId = securityQuestionViewModel.getQuestionId();
 
-        if (securityQuestionService.validateAnswer(answer, confirmAnswer)) {
+        if (securityQuestionService.validateQuestion(answer, confirmAnswer, questionId)) {
             return ("redirect:/leaderboard");
         } else {
             return ("redirect:/security-question?error");

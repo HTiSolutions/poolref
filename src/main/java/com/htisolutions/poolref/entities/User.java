@@ -21,7 +21,11 @@ public class User {
     private String nickname;
 
     @NotNull
-    private String hashedpassword;
+    private String hashed_password;
+
+    private long security_question_id;
+
+    private String security_question_answer;
 
     public User() { }
 
@@ -29,11 +33,11 @@ public class User {
         this.id = id;
     }
 
-    public User(String forename, String surname, String nickname, String hashedpassword) {
+    public User(String forename, String surname, String nickname, String hashed_password) {
         this.forename = forename;
         this.surname = surname;
         this.nickname = nickname;
-        this.hashedpassword = hashedpassword;
+        this.hashed_password = hashed_password;
     }
 
     public Long getId() {
@@ -53,8 +57,16 @@ public class User {
     }
 
     public String getHashedpassword() {
-        return this.hashedpassword;
+        return this.hashed_password;
     }
+
+    public long getSecurity_question_id(){return security_question_id;}
+
+    public String getSecurity_question_answer(){return security_question_answer;}
+
+    public void setSecurity_question_id(long security_question_id){this.security_question_id = security_question_id;}
+
+    public void setSecurity_question_answer(String security_question_answer){this.security_question_answer = security_question_answer;}
 
 
 }

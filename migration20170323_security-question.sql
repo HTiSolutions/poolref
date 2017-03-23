@@ -1,12 +1,12 @@
 CREATE TABLE `pool_ref`.`security_question` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `question` VARCHAR(45) NOT NULL,
+  `question` VARCHAR(80) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC));
 
 ALTER TABLE `pool_ref`.`user`
 ADD COLUMN `security_question_id` INT(11) NULL AFTER `hashedpassword`,
-ADD COLUMN `security_question_answer` VARCHAR(45) NULL AFTER `security_question_id`;
+ADD COLUMN `security_question_answer` VARCHAR(80) NULL AFTER `security_question_id`;
 
 ALTER TABLE `pool_ref`.`user`
 CHANGE COLUMN `hashedpassword` `hashed_password` VARCHAR(80) NOT NULL ;
