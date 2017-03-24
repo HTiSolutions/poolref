@@ -24,20 +24,20 @@
                 <th>Delete Game</th>
             </tr>
             </thead>
-        <tbody>
-        <th:block th:each="game : ${profile.getGamesInvolved()}">
-            <tr>
-                <td th:text="${game.getDate()}"></td>
-                <td th:text="${game.getWinner()}"></td>
-                <td th:text="${game.getLoser()}"></td>
-                <td class="form-group">
-                    <a href="/profile/delete" th:href="@{/profile/delete?id={gameId}(gameId=${game.getGameId()})}">
-                        <button class="btn btn-primary btn-lg btn-block">Delete Game</button>
-                    </a>
-                </td>
-            </tr>
-        </th:block>
-        </tbody>
-            </table>
+            <tbody>
+            <th:block th:each="game : ${profile.getGamesInvolved()}">
+                <tr>
+                    <td th:text="${game.getDate()}"></td>
+                    <td th:text="${game.getWinner()}"></td>
+                    <td th:text="${game.getLoser()}"></td>
+                    <td class="form-group">
+                        <a th:href="@{/profile/delete?id={gameId}(gameId=${game.getGameId()})}">
+                            <button class="btn btn-xs">Delete Game</button>
+                        </a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
     </body>
 </html>
