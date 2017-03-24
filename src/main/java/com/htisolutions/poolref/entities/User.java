@@ -1,6 +1,8 @@
 package com.htisolutions.poolref.entities;
 
 
+import com.sun.istack.internal.Nullable;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -23,8 +25,10 @@ public class User {
     @NotNull
     private String hashed_password;
 
-    private long security_question_id;
+    @Nullable
+    private Long security_question_id;
 
+    @Nullable
     private String security_question_answer;
 
     public User() { }
