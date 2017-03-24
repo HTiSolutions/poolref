@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label for="winner"> Winner </label>
                         <select id="winner" title="Select winner" class="form-control" th:field="${submitScore.winner}" name="winnerId">
-                            <option th:each="user : ${submitScore.users}" th:value="${user.id}" th:text="${user.nickname}"></option>
+                            <option th:each="user : ${submitScore.users}" th:value="${user.id}" th:text="${user.forename} + ' ' + ${user.surname} + ' (' + ${user.nickname} + ')'"></option>
                         </select>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                     <div class="form-group">
                         <label for="loser"> Loser </label>
                         <select id="loser" title="Select loser" class="form-control" th:field="${submitScore.loser}" name="loserId">
-                            <option th:each="user : ${submitScore.users}" th:value="${user.id}" th:text="${user.nickname}"></option>
+                            <option th:each="user : ${submitScore.users}" th:value="${user.id}" th:text="${user.forename} + ' ' + ${user.surname} + ' (' + ${user.nickname} + ')'"></option>
                         </select>
                     </div>
                 </div>
