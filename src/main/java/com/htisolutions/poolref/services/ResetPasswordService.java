@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-/**
- * Created by garethcarless on 24/03/2017.
- */
+
 @Service
 public class ResetPasswordService {
     private UserDao userDao;
