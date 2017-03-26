@@ -33,7 +33,7 @@ public class LeaderBoardService {
                winnerEntry.addWin();
            } else {
                User user = userService.getUserById(winnerId);
-               LeaderBoardEntryViewModel entry = new LeaderBoardEntryViewModel(user.getNickname());
+               LeaderBoardEntryViewModel entry = new LeaderBoardEntryViewModel(user);
                entry.addWin();
 
                leaderBoard.put(user.getId(), entry);
@@ -44,7 +44,7 @@ public class LeaderBoardService {
                loserEntry.addLoss();
            } else {
                User user = userService.getUserById(loserId);
-               LeaderBoardEntryViewModel entry = new LeaderBoardEntryViewModel(user.getNickname());
+               LeaderBoardEntryViewModel entry = new LeaderBoardEntryViewModel(user);
                entry.addLoss();
 
                leaderBoard.put(user.getId(), entry);

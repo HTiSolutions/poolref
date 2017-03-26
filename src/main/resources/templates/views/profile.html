@@ -21,7 +21,7 @@
                 <th>Date</th>
                 <th>Winner</th>
                 <th>Loser</th>
-                <th>Delete Game</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -32,7 +32,7 @@
                     <td th:text="${game.getLoser()}"></td>
                     <td class="form-group">
                         <a th:href="@{/profile/delete?id={gameId}(gameId=${game.getGameId()})}">
-                            <button class="btn btn-xs">Delete Game</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
                         </a>
                     </td>
                 </tr>
