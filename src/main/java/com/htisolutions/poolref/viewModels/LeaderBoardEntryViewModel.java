@@ -1,10 +1,14 @@
 package com.htisolutions.poolref.viewModels;
 
+import com.htisolutions.poolref.entities.User;
+
 public class LeaderBoardEntryViewModel {
 
     private Integer position;
 
-    private String nickname;
+    private Long userId;
+
+    private String name;
 
     private Integer wins;
 
@@ -12,8 +16,9 @@ public class LeaderBoardEntryViewModel {
 
     private Float percentage;
 
-    public LeaderBoardEntryViewModel(String nickname){
-        this.nickname = nickname;
+    public LeaderBoardEntryViewModel(User user){
+        this.userId = user.getId();
+        this.name = formatName(user);
         wins = 0;
         losses = 0;
         percentage = 0.0f;
@@ -41,12 +46,18 @@ public class LeaderBoardEntryViewModel {
         return this.position;
     }
 
-    public String getNickname() { return this.nickname; }
+    public Long getUserId() { return this.userId; }
+
+    public String getName() { return this.name; }
 
     public Integer getWins() { return this.wins; }
 
     public Integer getLosses() { return this.losses; }
 
     public Float getPercentage() { return this.percentage; }
+
+    private String formatName(User user) {
+        return String.format("%s %s (%s)", user.getForename(), user.getSurname(), user.getNickname());
+    }
 
 }
