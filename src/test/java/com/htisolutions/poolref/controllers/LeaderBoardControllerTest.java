@@ -4,6 +4,7 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import com.htisolutions.poolref.entities.User;
 import com.htisolutions.poolref.services.LeaderBoardService;
 import com.htisolutions.poolref.viewModels.LeaderBoardEntryViewModel;
 import org.junit.Test;
@@ -33,7 +34,8 @@ public class LeaderBoardControllerTest {
     @Test
     public void validateFormName() throws Exception {
         List<LeaderBoardEntryViewModel> leaderboard = new ArrayList<>();
-        LeaderBoardEntryViewModel entry = new LeaderBoardEntryViewModel("bm15731");
+        User user = new User("Bradley", "Miles", "bm15731", "password");
+        LeaderBoardEntryViewModel entry = new LeaderBoardEntryViewModel(user);
         entry.addWin();
         entry.addLoss();
         entry.addWin();

@@ -7,10 +7,9 @@ import com.htisolutions.poolref.services.UserService;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by george on 22/01/2017.
- */
 public class GameEntry {
+
+    private Long gameId;
 
     private User winner;
 
@@ -19,10 +18,13 @@ public class GameEntry {
     private String date;
 
     public GameEntry(User winner, User loser, Game game){
+        gameId = game.getId();
         this.winner = winner;
         this.loser = loser;
         date = new SimpleDateFormat("dd MMM yyyy  HH:mm").format(game.getDate());
     }
+
+    public Long getGameId() { return gameId;}
 
     public String getWinner(){
         return winner.getNickname();

@@ -7,6 +7,9 @@ import com.htisolutions.poolref.models.UserStat;
 import com.htisolutions.poolref.viewModels.ProfileViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 import java.util.ArrayList;
 import java.util.List;
