@@ -1,7 +1,9 @@
 package com.htisolutions.poolref.controllers;
 
+import com.htisolutions.poolref.entities.User;
 import com.htisolutions.poolref.services.ResetPasswordService;
 import com.htisolutions.poolref.viewModels.ResetPasswordNicknameViewModel;
+import com.htisolutions.poolref.viewModels.ResetPasswordPasswordViewModel;
 import com.htisolutions.poolref.viewModels.ResetPasswordQuestionViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
@@ -13,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ResetPasswordController {
 
     private ResetPasswordService resetPasswordService;
-    private String nickname;
+    private User user;
 
     @Autowired
     ResetPasswordController(ResetPasswordService resetPasswordService){this.resetPasswordService = resetPasswordService;}
@@ -28,8 +30,9 @@ public class ResetPasswordController {
 
     @RequestMapping(value="/nickname", method=RequestMethod.POST)
     public String enteredNickname(@ModelAttribute(value="resetPasswordNicknameViewModel") ResetPasswordNicknameViewModel resetPasswordNicknameViewModel) {
-        nickname = resetPasswordNicknameViewModel.getNickname();
+        String nickname = resetPasswordNicknameViewModel.getNickname();
         if (resetPasswordService.validName(nickname)) {
+            user = resetPasswordService.getUser(nickname);
             return ("redirect:/reset-password/question");
         } else {
             return ("redirect:/reset-password?error");
@@ -38,20 +41,51 @@ public class ResetPasswordController {
 
     @RequestMapping(value="/question")
     public ModelAndView question() {
-        ResetPasswordQuestionViewModel viewModel = new ResetPasswordQuestionViewModel();
-        viewModel.setQuestion(resetPasswordService.getQuesetionForNickname(nickname));
-        ModelAndView modelAndView = new ModelAndView("views/reset-password-question", "enterQuestion", viewModel);
-        modelAndView.addObject("resetQuestionViewModel", viewModel);
-        return modelAndView;
+        if (resetPasswordService.canAnswerQuestion()) {
+            ResetPasswordQuestionViewModel viewModel = new ResetPasswordQuestionViewModel();
+            viewModel.setQuestion(resetPasswordService.getQuesetion());
+            ModelAndView modelAndView = new ModelAndView("views/reset-password-question", "enterQuestion", viewModel);
+            modelAndView.addObject("resetQuestionViewModel", viewModel);
+            return modelAndView;
+        }
+        else{
+            return index();
+        }
     }
 
-    @RequestMapping(value="/password", method=RequestMethod.POST)
-    public String enteredQuestion(@ModelAttribute(value="resetPasswordNicknameViewModel") ResetPasswordNicknameViewModel resetPasswordNicknameViewModel) {
-        nickname = resetPasswordNicknameViewModel.getNickname();
-        if (resetPasswordService.validName(nickname)) {
-            return ("redirect:/security-question");
+    @RequestMapping(value="/question-answered", method=RequestMethod.POST)
+    public String questionAnswered(@ModelAttribute(value="resetQuestionViewModel") ResetPasswordQuestionViewModel resetPasswordQuestionViewModel) {
+        String answer = resetPasswordQuestionViewModel.getAnswer();
+        if (resetPasswordService.checkSecurityAnswer(answer)){
+            return ("redirect:/reset-password/password");
+        }
+        else{
+            return ("redirect:/reset-password/question?error");
+        }
+    }
+
+    @RequestMapping(value="/password")
+    public ModelAndView password() {
+        if (resetPasswordService.canResetPassword()) {
+            ResetPasswordPasswordViewModel resetPasswordPasswordViewModel = new ResetPasswordPasswordViewModel();
+            ModelAndView modelAndView = new ModelAndView("views/reset-password-password", "enterPassword", resetPasswordPasswordViewModel);
+            modelAndView.addObject("resetPasswordPasswordViewModel", resetPasswordPasswordViewModel);
+            return modelAndView;
+        }else{
+            return (question());
+        }
+    }
+
+    @RequestMapping(value="/login", method=RequestMethod.POST)
+    public String finished(@ModelAttribute(value="resetPasswordPasswordViewModel") ResetPasswordPasswordViewModel resetPasswordPasswordViewModel) {
+        String password = resetPasswordPasswordViewModel.getPassword();
+        String confirmPassword = resetPasswordPasswordViewModel.getConfirm();
+        if (resetPasswordService.validPassword(password, confirmPassword)) {
+            resetPasswordService.autologin(password);
+            resetPasswordService.clearProgress();
+            return ("redirect:/leaderboard");
         } else {
-            return ("redirect:/reset-password?error");
+            return ("redirect:/reset-password/password?error");
         }
     }
 }

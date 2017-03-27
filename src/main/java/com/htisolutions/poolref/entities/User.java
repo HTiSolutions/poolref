@@ -64,7 +64,7 @@ public class User {
         return this.hashed_password;
     }
 
-    public long getSecurity_question_id(){return security_question_id;}
+    public Long getSecurity_question_id(){return security_question_id;}
 
     public String getSecurity_question_answer(){return security_question_answer;}
 
@@ -72,7 +72,7 @@ public class User {
 
     public void setSecurity_question_answer(String security_question_answer){this.security_question_answer = security_question_answer;}
 
-
+    public void setHashed_password(String password){hashed_password = password;}
 }
 
 

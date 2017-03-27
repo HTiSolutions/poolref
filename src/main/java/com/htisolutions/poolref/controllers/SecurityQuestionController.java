@@ -41,7 +41,6 @@ public class SecurityQuestionController {
         String answer = securityQuestionViewModel.getAnswer();
         String confirmAnswer = securityQuestionViewModel.getConfirmAnswer();
         long questionId = securityQuestionViewModel.getQuestionId();
-
         if (securityQuestionService.validateQuestion(answer, confirmAnswer, questionId)) {
             return ("redirect:/leaderboard");
         } else {

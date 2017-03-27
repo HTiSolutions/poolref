@@ -31,7 +31,7 @@ public class RegisterService {
                 userDao.save(user);
             }
             catch (Exception ex) {
-                //"Error creating the user: " + ex.toString();
+                return false;
             }
             return true;
         }

@@ -1,8 +1,5 @@
 package com.htisolutions.poolref.viewModels;
 
-/**
- * Created by garethcarless on 24/03/2017.
- */
 public class ResetPasswordQuestionViewModel {
     private String answer;
 
