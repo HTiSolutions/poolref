@@ -12,22 +12,4 @@ ALTER TABLE `pool_ref`.`user`
 CHANGE COLUMN `hashedpassword` `hashed_password` VARCHAR(80) NOT NULL ;
 
 INSERT INTO `pool_ref`.`security_question` (id, question)
-VALUES ('1', "What is your mother's maiden name?");
-
-INSERT INTO `pool_ref`.`security_question` (id, question)
-VALUES ('2', "In what city were you born?");
-
-INSERT INTO `pool_ref`.`security_question` (id, question)
-VALUES ('3', "What secondary school did you attend?");
-
-INSERT INTO `pool_ref`.`security_question` (id, question)
-VALUES ('4', "What street did you grow up on?");
-
-INSERT INTO `pool_ref`.`security_question` (id, question)
-VALUES ('5', "What was the make of your first car?");
-
-INSERT INTO `pool_ref`.`security_question` (id, question)
-VALUES ('6', "Which is your favorite web browser?");
-
-INSERT INTO `pool_ref`.`security_question` (id, question)
-VALUES ('7', "What is the name of your favorite pet?");
+VALUES ('1', "What is your mother's maiden name?"), ('2', "In what city were you born?"), ('3', "What secondary school did you attend?"), ('4', "What street did you grow up on?"), ('5', "What was the make of your first car?"), ('6', "Which is your favorite web browser?"), ('7', "What is the name of your favorite pet?");
