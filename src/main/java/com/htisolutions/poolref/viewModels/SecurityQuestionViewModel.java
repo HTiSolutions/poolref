@@ -4,9 +4,6 @@ import com.htisolutions.poolref.entities.SecurityQuestion;
 
 import java.util.List;
 
-/**
- * Created by root on 23/03/2017.
- */
 public class SecurityQuestionViewModel {
     private String answer;
     private String confirmAnswer;

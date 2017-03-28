@@ -25,11 +25,9 @@ public class User {
     @NotNull
     private String hashed_password;
 
-    @Nullable
-    private Long security_question_id;
+    private Long securityQuestionId;
 
-    @Nullable
-    private String security_question_answer;
+    private String securityQuestionAnswer;
 
     public User() { }
 
@@ -64,13 +62,13 @@ public class User {
         return this.hashed_password;
     }
 
-    public Long getSecurity_question_id(){return security_question_id;}
+    public Long getSecurity_question_id(){return securityQuestionId;}
 
-    public String getSecurity_question_answer(){return security_question_answer;}
+    public String getSecurity_question_answer(){return securityQuestionAnswer;}
 
-    public void setSecurity_question_id(long security_question_id){this.security_question_id = security_question_id;}
+    public void setSecurity_question_id(long securityQuestionId){this.securityQuestionId = securityQuestionId;}
 
-    public void setSecurity_question_answer(String security_question_answer){this.security_question_answer = security_question_answer;}
+    public void setSecurity_question_answer(String securityQuestionAnswer){this.securityQuestionAnswer = securityQuestionAnswer;}
 
     public void setHashed_password(String password){hashed_password = password;}
 }
