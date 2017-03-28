@@ -1,8 +1,6 @@
 package com.htisolutions.poolref.entities;
 
 
-import com.sun.istack.internal.Nullable;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
