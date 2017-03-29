@@ -2,6 +2,8 @@ package com.htisolutions.poolref.services;
 
 import com.htisolutions.poolref.entities.UserDao;
 import com.htisolutions.poolref.entities.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -12,6 +14,9 @@ import org.springframework.stereotype.*;
 
 @Service
 public class RegisterService {
+
+    // Define the logger object for this class
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     private UserDao userDao;
     private DaoAuthenticationProvider authenticationProvider;
@@ -29,11 +34,11 @@ public class RegisterService {
                 String hashedPassword = passwordEncoder.encode(registerPassword);
                 User user = new User(firstName, lastName, nickname, hashedPassword);
                 userDao.save(user);
+                return true;
             }
             catch (Exception ex) {
-                return false;
+                log.error("Error creating the user: {}", ex.toString());
             }
-            return true;
         }
         return false;
     }

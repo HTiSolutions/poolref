@@ -10,7 +10,7 @@
             <thead>
                 <tr>
                     <th>Position</th>
-                    <th>Nickname</th>
+                    <th>Name</th>
                     <th>Wins</th>
                     <th>Losses</th>
                     <th>Win Percentage</th>
@@ -20,7 +20,9 @@
                 <th:block th:each="leaderboardEntry : ${leaderboardEntries}">
                     <tr>
                         <td th:text="${leaderboardEntry.getPosition()}"></td>
-                        <td th:text="${leaderboardEntry.getNickname()}"></td>
+                        <td>
+                            <a th:href="@{/profile/?id={userId}(userId=${leaderboardEntry.getUserId()})}" th:text="${leaderboardEntry.getName()}"></a>
+                        </td>
                         <td th:text="${leaderboardEntry.getWins()}"></td>
                         <td th:text="${leaderboardEntry.getLosses()}"></td>
                         <td th:text="${leaderboardEntry.getPercentage()}"></td>
