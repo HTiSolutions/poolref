@@ -2,9 +2,9 @@ package com.htisolutions.poolref.controllers;
 
 import com.htisolutions.poolref.entities.User;
 import com.htisolutions.poolref.services.ResetPasswordService;
-import com.htisolutions.poolref.viewModels.ResetPasswordNicknameViewModel;
-import com.htisolutions.poolref.viewModels.ResetPasswordPasswordViewModel;
-import com.htisolutions.poolref.viewModels.ResetPasswordQuestionViewModel;
+import com.htisolutions.poolref.viewModels.resetPasswordViewModels.ResetPasswordNicknameViewModel;
+import com.htisolutions.poolref.viewModels.resetPasswordViewModels.ResetPasswordPasswordViewModel;
+import com.htisolutions.poolref.viewModels.resetPasswordViewModels.ResetPasswordQuestionViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +43,7 @@ public class ResetPasswordController {
     public ModelAndView question() {
         if (resetPasswordService.canAnswerQuestion()) {
             ResetPasswordQuestionViewModel viewModel = new ResetPasswordQuestionViewModel();
-            viewModel.setQuestion(resetPasswordService.getQuesetion());
+            viewModel.setQuestion(resetPasswordService.getQuestion());
             ModelAndView modelAndView = new ModelAndView("views/reset-password-question", "enterQuestion", viewModel);
             modelAndView.addObject("resetQuestionViewModel", viewModel);
             return modelAndView;
@@ -79,9 +79,9 @@ public class ResetPasswordController {
     @RequestMapping(value="/login", method=RequestMethod.POST)
     public String finished(@ModelAttribute(value="resetPasswordPasswordViewModel") ResetPasswordPasswordViewModel resetPasswordPasswordViewModel) {
         String password = resetPasswordPasswordViewModel.getPassword();
-        String confirmPassword = resetPasswordPasswordViewModel.getConfirm();
-        if (resetPasswordService.validPassword(password, confirmPassword)) {
-            resetPasswordService.autologin(password);
+        String confirmPassword = resetPasswordPasswordViewModel.getConfirmPassword();
+        if (resetPasswordService.updatePassword(password, confirmPassword)) {
+            resetPasswordService.autoLogin(password);
             resetPasswordService.clearProgress();
             return ("redirect:/leaderboard");
         } else {

@@ -4,23 +4,19 @@ import com.htisolutions.poolref.entities.SecurityQuestion;
 import com.htisolutions.poolref.entities.SecurityQuestionDao;
 import com.htisolutions.poolref.entities.UserDao;
 import com.htisolutions.poolref.entities.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.*;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 @Service
 public class SecurityQuestionService {
 
     private SecurityQuestionDao securityQuestionDao;
     private UserDao userDao;
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     SecurityQuestionService(SecurityQuestionDao securityQuestionDao, UserDao userDao) {
@@ -34,13 +30,13 @@ public class SecurityQuestionService {
                 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
                 String hashedAnswer= passwordEncoder.encode(answer);
                 User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-                user.setSecurity_question_id(questionId);
-                user.setSecurity_question_answer(hashedAnswer);
+                user.setSecurityQuestionId(questionId);
+                user.setSecurityQuestionAnswer(hashedAnswer);
                 userDao.save(user);
 
             }
             catch (Exception ex) {
-                //"Error creating the user: " + ex.toString();
+                log.error("Error updating question: {}", ex.toString());
             }
             return true;
         }

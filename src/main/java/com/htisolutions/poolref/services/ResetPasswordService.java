@@ -4,6 +4,8 @@ import com.htisolutions.poolref.entities.SecurityQuestion;
 import com.htisolutions.poolref.entities.SecurityQuestionDao;
 import com.htisolutions.poolref.entities.User;
 import com.htisolutions.poolref.entities.UserDao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -20,6 +22,7 @@ public class ResetPasswordService {
     private DaoAuthenticationProvider authenticationProvider;
     private User user;
     private boolean answeredQuestion;
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     ResetPasswordService(UserDao userDao, SecurityQuestionDao securityQuestionDao, DaoAuthenticationProvider authenticationProvider) {
@@ -30,17 +33,19 @@ public class ResetPasswordService {
         answeredQuestion = false;
     }
 
-    public boolean canAnswerQuestion(){
+    public boolean canAnswerQuestion() {
         return (user != null);
     }
-    public boolean canResetPassword(){
+
+    public boolean canResetPassword() {
         return (user != null && answeredQuestion);
     }
-    public Boolean validName(String nickname){
-        Iterable <User> userList = userDao.findAll();
-        for(User user: userList){
-            if (user.getNickname().equals(nickname)){
-                if(user.getSecurity_question_id() != null) {
+
+    public Boolean validName(String nickname) {
+        Iterable<User> userList = userDao.findAll();
+        for (User user : userList) {
+            if (user.getNickname().equals(nickname)) {
+                if (user.getSecurityQuestionId() != null) {
                     this.user = user;
                     return true;
                 }
@@ -48,52 +53,52 @@ public class ResetPasswordService {
         }
         return false;
     }
-    public void autologin(String password) {
+
+    public void autoLogin(String password) {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user.getNickname(), password);
         Authentication authentication = authenticationProvider.authenticate(token);
-        SecurityContextHolder.getContext().setAuthentication(authentication );
+        SecurityContextHolder.getContext().setAuthentication(authentication);
     }
-    public boolean validPassword(String password, String confirm){
-        if (password.equals(confirm)){
+
+    public boolean updatePassword(String password, String confirmPassword) {
+        if (password.equals(confirmPassword)) {
             try {
                 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
                 String hashedPassword = passwordEncoder.encode(password);
-                user.setHashed_password(hashedPassword);
+                user.setHashedPassword(hashedPassword);
                 userDao.save(user);
                 return true;
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
+                log.error("Error updating password: {}", ex.toString());
                 return false;
             }
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    public User getUser(String nickname){
+    public User getUser(String nickname) {
         User user = userDao.findByNickname(nickname);
         return user;
     }
 
-    public String getQuesetion(){
-        long questionId = user.getSecurity_question_id();
+    public String getQuestion() {
+        long questionId = user.getSecurityQuestionId();
         SecurityQuestion question = securityQuestionDao.findOne(questionId);
         return question.getQuestion();
     }
 
-    public boolean checkSecurityAnswer(String answer){
+    public boolean checkSecurityAnswer(String answer) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        if (passwordEncoder.matches(answer, user.getSecurity_question_answer())){
+        if (passwordEncoder.matches(answer, user.getSecurityQuestionAnswer())) {
             answeredQuestion = true;
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    public void clearProgress(){
+    public void clearProgress() {
         user = null;
         answeredQuestion = false;
     }

@@ -21,7 +21,7 @@ public class User {
     private String nickname;
 
     @NotNull
-    private String hashed_password;
+    private String hashedPassword;
 
     private Long securityQuestionId;
 
@@ -33,11 +33,11 @@ public class User {
         this.id = id;
     }
 
-    public User(String forename, String surname, String nickname, String hashed_password) {
+    public User(String forename, String surname, String nickname, String hashedPassword) {
         this.forename = forename;
         this.surname = surname;
         this.nickname = nickname;
-        this.hashed_password = hashed_password;
+        this.hashedPassword = hashedPassword;
     }
 
     public Long getId() {
@@ -57,18 +57,18 @@ public class User {
     }
 
     public String getHashedpassword() {
-        return this.hashed_password;
+        return this.hashedPassword;
     }
 
-    public Long getSecurity_question_id(){return securityQuestionId;}
+    public Long getSecurityQuestionId(){return securityQuestionId;}
 
-    public String getSecurity_question_answer(){return securityQuestionAnswer;}
+    public String getSecurityQuestionAnswer(){return securityQuestionAnswer;}
 
-    public void setSecurity_question_id(long securityQuestionId){this.securityQuestionId = securityQuestionId;}
+    public void setSecurityQuestionId(long securityQuestionId){this.securityQuestionId = securityQuestionId;}
 
-    public void setSecurity_question_answer(String securityQuestionAnswer){this.securityQuestionAnswer = securityQuestionAnswer;}
+    public void setSecurityQuestionAnswer(String securityQuestionAnswer){this.securityQuestionAnswer = securityQuestionAnswer;}
 
-    public void setHashed_password(String password){hashed_password = password;}
+    public void setHashedPassword(String password){hashedPassword = password;}
 }
 
 

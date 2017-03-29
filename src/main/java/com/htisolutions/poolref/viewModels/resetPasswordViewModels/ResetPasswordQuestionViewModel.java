@@ -1,4 +1,4 @@
-package com.htisolutions.poolref.viewModels;
+package com.htisolutions.poolref.viewModels.resetPasswordViewModels;
 
 public class ResetPasswordQuestionViewModel {
     private String answer;
