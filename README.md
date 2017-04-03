@@ -34,3 +34,9 @@ Deployment (Setting up the box)
 14. Change gradlew privileges `sudo chmod +x gradlew`
 15. Build latest version of web application `./gradlew clean build`
 16. Run web application `./gradlew bootrun`
+
+Re-Starting the Application
+
+1. Find PID for the application: `ps -ef`
+2. Stop the application: `kill [pid]`
+3. Restart the application: `sudo ./gradlew bootrun &`
