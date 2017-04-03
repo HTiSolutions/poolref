@@ -24,6 +24,12 @@ repositories {
     mavenCentral()
 }
 
+bootRun {
+	//jvmArgs "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000"
+	jvmArgs '-Xdebug',
+			'-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000'
+}
+
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
