@@ -24,6 +24,11 @@ repositories {
     mavenCentral()
 }
 
+bootRun {
+	jvmArgs '-Xdebug',
+			'-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000'
+}
+
 
 dependencies {
 	compile group: 'org.twitter4j', name: 'twitter4j-core', version: '4.0.1'
