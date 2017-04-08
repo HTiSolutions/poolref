@@ -26,7 +26,7 @@ repositories {
 
 bootRun {
 	jvmArgs '-Xdebug',
-			'-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000'
+			'-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000'
 }
 
 

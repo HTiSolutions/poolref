@@ -21,7 +21,11 @@ public class User {
     private String nickname;
 
     @NotNull
-    private String hashedpassword;
+    private String hashedPassword;
+
+    private Long securityQuestionId;
+
+    private String securityQuestionAnswer;
 
     private Long twitterTokenId;
 
@@ -31,11 +35,11 @@ public class User {
         this.id = id;
     }
 
-    public User(String forename, String surname, String nickname, String hashedpassword) {
+    public User(String forename, String surname, String nickname, String hashedPassword) {
         this.forename = forename;
         this.surname = surname;
         this.nickname = nickname;
-        this.hashedpassword = hashedpassword;
+        this.hashedPassword = hashedPassword;
         twitterTokenId = null;
     }
 
@@ -60,12 +64,20 @@ public class User {
     }
 
     public String getHashedpassword() {
-        return this.hashedpassword;
+        return this.hashedPassword;
     }
 
+    public Long getSecurityQuestionId(){return securityQuestionId;}
     public void setTwitterTokenId(Long twitterTokenId){this.twitterTokenId = twitterTokenId;}
 
 
+    public String getSecurityQuestionAnswer(){return securityQuestionAnswer;}
+
+    public void setSecurityQuestionId(long securityQuestionId){this.securityQuestionId = securityQuestionId;}
+
+    public void setSecurityQuestionAnswer(String securityQuestionAnswer){this.securityQuestionAnswer = securityQuestionAnswer;}
+
+    public void setHashedPassword(String password){hashedPassword = password;}
 }
 
 

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="bootstrap/css/bootstrap.min.css"
+          th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <meta charset="UTF-8"/>
+    <title>Enter Security Question</title>
+</head>
+<body>
+<div class="container">
+    <p><!-- Just for blank space--></p>
+    <div class="jumbotron">
+        <div class="title text-center">
+            <h1>Enter Security Question</h1>
+        </div>
+        <form class="form-centre" th:action="@{/security-question/security-question}" th:object="${securityQuestionViewModel}" method="post">
+            <div class="form-group">
+                <form class="form col-md-3 center-block">
+                    <div class="row">
+                        <div class="col-xs-offset-3 col-sm-6 col-md-6">
+                            <div class="form-input">
+                                <div th:if="${param.error}" class="alert alert-danger">
+                                    Error submitting
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-offset-3 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <select id="question" title="Select question" class="form-control" th:field="${securityQuestions.questionId}" name="questionId">
+                                        <option th:each="securityQuestion : ${securityQuestions.getSecurityQuestion()}" th:value="${securityQuestion.id}" th:text="${securityQuestion.question}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-offset-3 col-sm-6 col-md-6">
+                            <div class="form-group ">
+                                <input name="answer" type="password" class="form-control input-lg" placeholder="Answer" required="required" th:field="*{answer}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-offset-3 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <input name="confirmPassword-answer" type="password" class="form-control input-lg" placeholder="Confirm Answer" required="required" th:field="*{confirmAnswer}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-offset-3 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-lg btn-block">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
