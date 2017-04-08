@@ -34,7 +34,7 @@ public class RegisterController {
 
         if (registerService.validRegister(firstName, lastName, registerNickname, registerPassword, confirmPassword)) {
             registerService.autologin(registerNickname, registerPassword);
-            return ("redirect:/leaderboard");
+            return ("redirect:/security-question");
         } else {
             return ("redirect:/register?error");
         }
