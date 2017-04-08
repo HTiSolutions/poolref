@@ -23,6 +23,8 @@ public class User {
     @NotNull
     private String hashedpassword;
 
+    private Long twitterTokenId;
+
     public User() { }
 
     public User(Long id) {
@@ -34,6 +36,7 @@ public class User {
         this.surname = surname;
         this.nickname = nickname;
         this.hashedpassword = hashedpassword;
+        twitterTokenId = null;
     }
 
     public Long getId() {
@@ -52,9 +55,15 @@ public class User {
         return this.nickname;
     }
 
+    public Long getTwitterTokenId() {
+        return twitterTokenId;
+    }
+
     public String getHashedpassword() {
         return this.hashedpassword;
     }
+
+    public void setTwitterTokenId(Long twitterTokenId){this.twitterTokenId = twitterTokenId;}
 
 
 }
