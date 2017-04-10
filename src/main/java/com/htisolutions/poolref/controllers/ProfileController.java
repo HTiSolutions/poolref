@@ -35,9 +35,9 @@ public class ProfileController {
                 ? (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()
                 : userService.getUserById(userId);
 
-        ProfileViewModel viewModel = profileService.generateProfile(user);
+        ProfileViewModel profileViewModel = profileService.generateProfile(user);
 
-        return new ModelAndView("views/profile", "profile", viewModel);
+        return new ModelAndView("views/profile", "profile", profileViewModel);
     }
 
     @RequestMapping(value = "/delete")

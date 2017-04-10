@@ -31,7 +31,7 @@
                     <td th:text="${game.getWinner()}"></td>
                     <td th:text="${game.getLoser()}"></td>
                     <td class="form-group">
-                        <a th:href="@{/profile/delete?id={gameId}(gameId=${game.getGameId()})}">
+                        <a th:if="${profile.getEnableButton()} == true" th:href="@{/profile/delete?id={gameId}(gameId=${game.getGameId()})}">
                             <button type="button" class="btn btn-danger">Delete</button>
                         </a>
                     </td>
