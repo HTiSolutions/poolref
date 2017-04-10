@@ -18,7 +18,7 @@ public class LeaderBoardEntryViewModel {
 
     public LeaderBoardEntryViewModel(User user){
         this.userId = user.getId();
-        this.name = formatName(user);
+        this.name = user.formatName();
         wins = 0;
         losses = 0;
         percentage = 0.0f;
@@ -55,9 +55,5 @@ public class LeaderBoardEntryViewModel {
     public Integer getLosses() { return this.losses; }
 
     public Float getPercentage() { return this.percentage; }
-
-    private String formatName(User user) {
-        return String.format("%s %s (%s)", user.getForename(), user.getSurname(), user.getNickname());
-    }
 
 }

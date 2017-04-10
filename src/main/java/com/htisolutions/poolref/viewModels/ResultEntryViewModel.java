@@ -1,29 +1,36 @@
 package com.htisolutions.poolref.viewModels;
 
+import com.htisolutions.poolref.entities.User;
+
 public class ResultEntryViewModel {
 
     private String date;
 
-    private String winnerNickname;
+    private User winner;
 
-    private String loserNickname;
+    private User loser;
 
-    public ResultEntryViewModel(String date, String winnerNickname, String loserNickname){
+    public ResultEntryViewModel(String date, User winner, User loser){
         this.date = date;
-        this.winnerNickname = winnerNickname;
-        this.loserNickname = loserNickname;
+        this.winner = winner;
+        this.loser = loser;
     }
 
     public String getDate() {
         return this.date;
     }
 
-    public String getWinnerNickname() {
-        return this.winnerNickname;
+    public String getWinnerName() {
+        return winner.formatName();
     }
 
-    public String getLoserNickname() {
-        return this.loserNickname;
+    public String getLoserName() {
+        return loser.formatName();
     }
+
+    public Long getWinnerId(){return winner.getId();}
+
+    public Long getLoserId(){return loser.getId();}
+
 
 }

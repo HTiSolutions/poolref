@@ -26,15 +26,16 @@ public class GameEntry {
 
     public Long getGameId() { return gameId;}
 
-    public String getWinner(){
-        return winner.getNickname();
-    }
-
-    public String getLoser(){
-        return loser.getNickname();
-    }
-
     public String getDate(){
         return date;
     }
+
+    public String getWinnerName(){return winner.formatName();}
+
+    public String getLoserName(){return loser.formatName();}
+
+    public Long getWinnerId(){ return winner.getId();}
+
+    public Long getLoserId(){ return loser.getId();}
+
 }
