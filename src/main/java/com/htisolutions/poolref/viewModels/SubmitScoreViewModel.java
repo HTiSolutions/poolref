@@ -10,6 +10,10 @@ public class SubmitScoreViewModel {
 
     private User loser;
 
+    private String tweet;
+
+    private boolean tagOpponent;
+
     public Iterable<User> getUsers() {
         return this.users;
     }
@@ -33,5 +37,13 @@ public class SubmitScoreViewModel {
     public void setLoser(User loser) {
         this.loser = loser;
     }
+
+    public String getTweet(){return tweet;}
+
+    public void setTweet(String tweeet){this.tweet = tweeet;}
+
+    public boolean getTagOpponent(){return tagOpponent;}
+
+    public void setTagOpponent(boolean tagOpponent){this.tagOpponent = tagOpponent;}
 
 }

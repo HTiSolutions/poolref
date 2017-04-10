@@ -7,6 +7,7 @@ public class RegisterViewModel {
     private String registerNickname;
     private String registerPassword;
     private String confirmPassword;
+    private boolean twitter;
 
     public String getConfirmPassword() {
         return confirmPassword;
@@ -28,6 +29,8 @@ public class RegisterViewModel {
         return registerPassword;
     }
 
+    public boolean getTwitter(){ return twitter;}
+
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
@@ -47,4 +50,6 @@ public class RegisterViewModel {
     public void setRegisterPassword(String registerPassword) {
         this.registerPassword = registerPassword;
     }
+
+    public void setTwitter(boolean twitter){this.twitter = twitter;}
 }

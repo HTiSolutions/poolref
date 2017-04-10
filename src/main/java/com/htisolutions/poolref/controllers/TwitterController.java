@@ -20,23 +20,32 @@ public class TwitterController {
     private RequestToken requestToken;
     private Twitter twitter;
     private TwitterService twitterService;
+    private boolean registerInProgress;
 
     @Autowired
     TwitterController(TwitterService twitterService){
         this.twitterService = twitterService;
-        twitter = TwitterFactory.getSingleton();
-        twitter.setOAuthConsumer("aqFIw1MyHnpaYO717JWLv36KZ", "1ykTKVJ20k03Grrkn6rYVLS314QbcC3SiDto7TfvpVIiPOmX3Q");
     }
 
-    @RequestMapping()
-    public String index(){
+    @RequestMapping(method = RequestMethod.GET)
+    public String index(
+            @RequestParam(name = "register_in_progress") boolean registerInProgress
+    ){
+        this.registerInProgress = registerInProgress;
+        TwitterFactory factory = new TwitterFactory();
+        twitter = factory.getInstance();
+        twitter.setOAuthConsumer("aqFIw1MyHnpaYO717JWLv36KZ", "1ykTKVJ20k03Grrkn6rYVLS314QbcC3SiDto7TfvpVIiPOmX3Q");
         try {
             requestToken = twitter.getOAuthRequestToken();
             return ("redirect:/twitter/signIn");
         }catch (TwitterException e){
-
+            if(registerInProgress){
+                return ("redirect:/security-question");
+            }
+            else{
+                return ("redirect:/leaderboard");
+            }
         }
-        return "register";
     }
 
     @RequestMapping("/signIn")
@@ -47,17 +56,24 @@ public class TwitterController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/callback")
     public String callBack(
-            @RequestParam(name = "oauth_verifier") String verifier
+            @RequestParam(name = "oauth_verifier", required = false) String verifier,
+            @RequestParam(name = "denied", required = false) String denied
     ){
-        try {
-            AccessToken accessToken = twitter.getOAuthAccessToken(verifier);
-            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            twitterService.saveTwitterToken(user, accessToken);
-        }
-        catch (TwitterException e){
+        if(denied == null) {
+            try {
+                AccessToken accessToken = twitter.getOAuthAccessToken(verifier);
+                User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+                twitterService.saveTwitterToken(user, accessToken);
+            } catch (TwitterException e) {
 
+            }
         }
-        return ("redirect:/leaderboard");
+        if(registerInProgress){
+            return ("redirect:/security-question");
+        }
+        else{
+            return ("redirect:/leaderboard");
+        }
     }
 
 }

@@ -31,10 +31,16 @@ public class RegisterController {
         String registerNickname = registerViewModel.getRegisterNickname();
         String registerPassword = registerViewModel.getRegisterPassword();
         String confirmPassword = registerViewModel.getConfirmPassword();
+        boolean twitter = registerViewModel.getTwitter();
 
         if (registerService.validRegister(firstName, lastName, registerNickname, registerPassword, confirmPassword)) {
             registerService.autologin(registerNickname, registerPassword);
-            return ("redirect:/security-question");
+            if (twitter){
+                return ("redirect:/twitter?register_in_progress=true");
+            }
+            else {
+                return ("redirect:/security-question");
+            }
         } else {
             return ("redirect:/register?error");
         }

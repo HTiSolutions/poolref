@@ -17,6 +17,9 @@
                     <div th:if="${param.error}" class="alert alert-danger">
                         Error saving game, winner and loser cannot be the same
                     </div>
+                    <div th:if="${param.twitterError}" class="alert alert-danger">
+                        Your account is not connected to twitter
+                    </div>
                 </div>
             </div>
         </div>
@@ -36,6 +39,20 @@
                         <select id="loser" title="Select loser" class="form-control" th:field="${submitScore.loser}" name="loserId">
                             <option th:each="user : ${submitScore.users}" th:value="${user.id}" th:text="${user.forename} + ' ' + ${user.surname} + ' (' + ${user.nickname} + ')'"></option>
                         </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-offset-3 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3" id="tweet" placeholder="Add a tweet to post to twitter (Leave blank otherwise) #poolref" th:field="${submitScore.tweet}"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-offset-3 col-sm-6 col-md-6">
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="Include opposer tag"  name="twitter-checkbox" th:field="*{tagOpponent}"/>Tag the opposition player if they have Twitter in tweet</label>
                     </div>
                 </div>
             </div>

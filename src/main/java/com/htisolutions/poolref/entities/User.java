@@ -68,8 +68,8 @@ public class User {
     }
 
     public Long getSecurityQuestionId(){return securityQuestionId;}
-    public void setTwitterTokenId(Long twitterTokenId){this.twitterTokenId = twitterTokenId;}
 
+    public void setTwitterTokenId(Long twitterTokenId){this.twitterTokenId = twitterTokenId;}
 
     public String getSecurityQuestionAnswer(){return securityQuestionAnswer;}
 

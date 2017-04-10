@@ -1,19 +1,18 @@
 package com.htisolutions.poolref.entities;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
 public class TwitterToken {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotNull
-    @Column(name="twitter_id")
-    private Long twitterId;
+    @Column(name="twitter_name")
+    private String twitterName;
 
     @NotNull
     @Column(name="token")
@@ -23,15 +22,21 @@ public class TwitterToken {
     @Column(name="token_secret")
     private String tokenSecret;
 
-    public TwitterToken(Long twitterId, String token, String tokenSecret){
-        this.twitterId = twitterId;
+    public TwitterToken() { }
+
+    public TwitterToken(Long id) {
+        this.id = id;
+    }
+
+    public TwitterToken(String twitterName, String token, String tokenSecret){
+        this.twitterName = twitterName;
         this.token = token;
         this.tokenSecret = tokenSecret;
     }
 
     public Long getId(){ return id;}
 
-    public Long getTwitterId(){ return twitterId;}
+    public String getTwitterName(){ return twitterName;}
 
     public String getToken(){ return token;}
 
