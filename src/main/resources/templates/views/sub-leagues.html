@@ -26,7 +26,7 @@
                 <th:block th:each="leaderboardEntry : ${sub.get(leaderboardName)}">
                     <tr>
                         <td th:text="${leaderboardEntry.getPosition()}"></td>
-                        <td th:text="${leaderboardEntry.getNickname()}"></td>
+                        <td th:text="${leaderboardEntry.getName()}"></td>
                         <td th:text="${leaderboardEntry.getWins()}"></td>
                         <td th:text="${leaderboardEntry.getLosses()}"></td>
                         <td th:text="${leaderboardEntry.getPercentage()}"></td>
