@@ -2,9 +2,9 @@ package com.htisolutions.poolref.controllers;
 
 import com.htisolutions.poolref.entities.User;
 import com.htisolutions.poolref.services.ResetPasswordService;
-import com.htisolutions.poolref.viewModels.resetPasswordViewModels.ResetPasswordNicknameViewModel;
-import com.htisolutions.poolref.viewModels.resetPasswordViewModels.ResetPasswordPasswordViewModel;
-import com.htisolutions.poolref.viewModels.resetPasswordViewModels.ResetPasswordQuestionViewModel;
+import com.htisolutions.poolref.viewModels.resetPassword.ResetPasswordNicknameViewModel;
+import com.htisolutions.poolref.viewModels.resetPassword.ResetPasswordPasswordViewModel;
+import com.htisolutions.poolref.viewModels.resetPassword.ResetPasswordQuestionViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;

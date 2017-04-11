@@ -1,4 +1,4 @@
-package com.htisolutions.poolref.viewModels.resetPasswordViewModels;
+package com.htisolutions.poolref.viewModels.resetPassword;
 
 public class ResetPasswordNicknameViewModel {
     private String nickname;

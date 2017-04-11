@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-
 @Service
 public class SubLeaguesService {
 
@@ -40,7 +39,7 @@ public class SubLeaguesService {
         HashMap<Long, LeaderBoardEntryViewModel> subLeagueTable = new HashMap<>();
         Iterable<Game> games = gameService.getGames();
         for (User user : userLeagueMappingRepository.findAllUsersByLeagueId(subLeague.getId())) {
-            LeaderBoardEntryViewModel entry = new LeaderBoardEntryViewModel(user.getNickname());
+            LeaderBoardEntryViewModel entry = new LeaderBoardEntryViewModel(user);
             subLeagueTable.put(user.getId(), entry);
         }
 
@@ -78,8 +77,7 @@ public class SubLeaguesService {
     }
 
     public long createLeague(String name) {
-      long id = userLeagueMappingRepository.saveLeague(name);
-      return id;
+      return userLeagueMappingRepository.saveLeague(name);
     }
 
     public Boolean addPlayers(long leagueId, long userId) {
