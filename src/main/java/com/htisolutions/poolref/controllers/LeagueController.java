@@ -2,7 +2,6 @@ package com.htisolutions.poolref.controllers;
 
 import com.htisolutions.poolref.entities.User;
 import com.htisolutions.poolref.services.SubLeaguesService;
-import com.htisolutions.poolref.viewModels.SubLeagueViewModel;
 import com.htisolutions.poolref.services.UserService;
 import com.htisolutions.poolref.viewModels.CreateSubLeagueViewModel;
 import com.htisolutions.poolref.viewModels.LeaderBoardEntryViewModel;
