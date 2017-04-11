@@ -28,8 +28,12 @@
             <th:block th:each="game : ${profile.getGamesInvolved()}">
                 <tr>
                     <td th:text="${game.getDate()}"></td>
-                    <td th:text="${game.getWinner()}"></td>
-                    <td th:text="${game.getLoser()}"></td>
+                    <td>
+                        <a th:href="@{/profile/?id={userId}(userId=${game.getWinnerId()})}" th:text="${game.getWinnerName()}"></a>
+                    </td>
+                    <td>
+                        <a th:href="@{/profile/?id={userId}(userId=${game.getLoserId()})}" th:text="${game.getLoserName()}"></a>
+                    </td>
                     <td class="form-group">
                         <a th:if="${profile.getEnableButton()} == true" th:href="@{/profile/delete?id={gameId}(gameId=${game.getGameId()})}">
                             <button type="button" class="btn btn-danger">Delete</button>

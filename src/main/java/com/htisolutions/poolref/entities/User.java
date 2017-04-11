@@ -69,6 +69,10 @@ public class User {
     public void setSecurityQuestionAnswer(String securityQuestionAnswer){this.securityQuestionAnswer = securityQuestionAnswer;}
 
     public void setHashedPassword(String password){hashedPassword = password;}
+
+    public String formatName() {
+        return String.format("%s %s (%s)", forename, surname, nickname);
+    }
 }
 
 
