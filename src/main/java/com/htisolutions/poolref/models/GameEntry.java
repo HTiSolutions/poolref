@@ -9,6 +9,8 @@ import java.util.Date;
 
 public class GameEntry {
 
+    private Long gameId;
+
     private User winner;
 
     private User loser;
@@ -16,20 +18,24 @@ public class GameEntry {
     private String date;
 
     public GameEntry(User winner, User loser, Game game){
+        gameId = game.getId();
         this.winner = winner;
         this.loser = loser;
         date = new SimpleDateFormat("dd MMM yyyy  HH:mm").format(game.getDate());
     }
 
-    public String getWinner(){
-        return winner.getNickname();
-    }
-
-    public String getLoser(){
-        return loser.getNickname();
-    }
+    public Long getGameId() { return gameId;}
 
     public String getDate(){
         return date;
     }
+
+    public String getWinnerName(){return winner.formatName();}
+
+    public String getLoserName(){return loser.formatName();}
+
+    public Long getWinnerId(){ return winner.getId();}
+
+    public Long getLoserId(){ return loser.getId();}
+
 }

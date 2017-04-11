@@ -20,8 +20,12 @@
                 <th:block th:each="result : ${results}">
                     <tr>
                         <td th:text="${result.date}"></td>
-                        <td th:text="${result.winnerNickname}"></td>
-                        <td th:text="${result.loserNickname}"></td>
+                        <td>
+                            <a th:href="@{/profile/?id={userId}(userId=${result.getWinnerId()})}" th:text="${result.getWinnerName()}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{/profile/?id={userId}(userId=${result.getLoserId()})}" th:text="${result.getLoserName()}"></a>
+                        </td>
                     </tr>
                 </th:block>
             </tbody>

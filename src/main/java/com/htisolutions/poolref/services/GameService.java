@@ -30,6 +30,14 @@ public class GameService {
         return false;
     }
 
+    public void gameDelete(Long gameId) {
+        try {
+            gameDao.delete(gameId);
+        } catch (Exception ex) {
+            //"Error saving the game: " + ex.toString();
+        }
+    }
+
     public Iterable<Game> getGames() {
         Iterable<Game> games = gameDao.findAll();
         return games;

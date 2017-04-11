@@ -13,7 +13,7 @@
                 <div class="title text-center">
                     <h1>Register</h1>
                 </div>
-                <form class="form-centre" th:action="@{/register/register}">
+                <form class="form-centre" th:action="@{/register/register}" th:object="${registerViewModel}" method="post">
                     <div class="form-group">
                         <form class="form col-md-3 center-block">
                             <div class="row">
@@ -28,31 +28,31 @@
                             <div class="row">
                                 <div class="col-xs-offset-3 col-sm-3 col-md-3">
                                     <div class="form-group">
-                                        <input name="first-name" type="text" class="form-control input-lg" placeholder="First Name" required="required"/>
+                                        <input name="first-name" type="text" class="form-control input-lg" placeholder="First Name" required="required" th:field="*{firstName}"/>
                                     </div>
                                 </div>
                                 <div class="col-xs-3 col-sm-3 col-md-3">
                                     <div class="form-group">
-                                        <input name="last-name" type="text" class="form-control input-lg" placeholder="Last Name" required="required"/>
+                                        <input name="last-name" type="text" class="form-control input-lg" placeholder="Last Name" required="required" th:field="*{lastName}"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-offset-3 col-sm-6 col-md-6">
                                     <div class="form-group ">
-                                        <input name="register-nickname" type="text" class="form-control input-lg" placeholder="Nickname" required="required"/>
+                                        <input name="register-nickname" type="text" class="form-control input-lg" placeholder="Nickname" required="required" th:field="*{registerNickname}"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-offset-3 col-sm-3 col-md-3">
                                     <div class="form-group">
-                                        <input name="register-password" type="password" class="form-control input-lg" placeholder="Password" required="required"/>
+                                        <input name="register-password" type="password" class="form-control input-lg" placeholder="Password" required="required" th:field="*{registerPassword}"/>
                                     </div>
                                 </div>
                                 <div class="col-xs-3 col-sm-3 col-md-3">
                                     <div class="form-group">
-                                        <input name="confirm-password" type="password" class="form-control input-lg" placeholder="Confirm Password" required="required"/>
+                                        <input name="confirm-password" type="password" class="form-control input-lg" placeholder="Confirm Password" required="required" th:field="*{confirmPassword}"/>
                                     </div>
                                 </div>
                             </div>

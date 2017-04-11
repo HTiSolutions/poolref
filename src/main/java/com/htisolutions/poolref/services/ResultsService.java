@@ -34,11 +34,7 @@ public class ResultsService {
             User winner = userService.getUserById(game.getWinnerId());
             User loser = userService.getUserById(game.getLoserId());
 
-            ResultEntryViewModel viewModel = new ResultEntryViewModel(
-                date,
-                winner.getNickname(),
-                loser.getNickname()
-            );
+            ResultEntryViewModel viewModel = new ResultEntryViewModel(date, winner, loser);
             results.add(viewModel);
         }
         Collections.reverse(results);

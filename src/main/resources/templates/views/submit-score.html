@@ -9,7 +9,7 @@
             <h1>Submit a Score!</h1>
         </div>
         <div class="text-center">
-            <h4>Select the nickname of the winner and loser</h4>
+            <h4>Select the name of the winner and loser</h4>
         </div>
         <div class="row">
             <div class="col-xs-offset-3 col-sm-6 col-md-6">
@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label for="winner"> Winner </label>
                         <select id="winner" title="Select winner" class="form-control" th:field="${submitScore.winner}" name="winnerId">
-                            <option th:each="user : ${submitScore.users}" th:value="${user.id}" th:text="${user.nickname}"></option>
+                            <option th:each="user : ${submitScore.users}" th:value="${user.id}" th:text="${user.forename} + ' ' + ${user.surname} + ' (' + ${user.nickname} + ')'"></option>
                         </select>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                     <div class="form-group">
                         <label for="loser"> Loser </label>
                         <select id="loser" title="Select loser" class="form-control" th:field="${submitScore.loser}" name="loserId">
-                            <option th:each="user : ${submitScore.users}" th:value="${user.id}" th:text="${user.nickname}"></option>
+                            <option th:each="user : ${submitScore.users}" th:value="${user.id}" th:text="${user.forename} + ' ' + ${user.surname} + ' (' + ${user.nickname} + ')'"></option>
                         </select>
                     </div>
                 </div>
