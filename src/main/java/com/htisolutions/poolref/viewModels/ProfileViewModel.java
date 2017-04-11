@@ -49,4 +49,6 @@ public class ProfileViewModel {
 
     public List <GameEntry> getGamesInvolved(){return gamesInvolved;}
 
+
+
 }
