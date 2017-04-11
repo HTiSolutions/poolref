@@ -3,7 +3,7 @@ package com.htisolutions.poolref.controllers;
 import com.htisolutions.poolref.entities.User;
 import com.htisolutions.poolref.services.GameService;
 import com.htisolutions.poolref.services.ProfileService;
-import com.htisolutions.poolref.services.UserService;
+import com.htisolutions.poolref.services.SubLeaguesService;
 import com.htisolutions.poolref.viewModels.ProfileViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:include = "layout :: page">
+    <head th:fragment="head">
+        <title>Sub Leagues</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body th:fragment="content">
+        <div class="title text-center">
+            <h1>Your Sub Leagues</h1>
+            <a href="/sub-leagues/name1">
+                <button class="btn btn-primary">Create a League</button>
+            </a>
+        </div>
+        <table th:object="${sub}" class="table table-sm table-bordered" th:each="leaderboardName : ${sub.keySet()}">
+            <thead>
+                <h4 th:text="${leaderboardName}"></h4>
+                <tr>
+                    <th>Position</th>
+                    <th>Nickname</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Win Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="leaderboardEntry : ${sub.get(leaderboardName)}">
+                    <tr>
+                        <td th:text="${leaderboardEntry.getPosition()}"></td>
+                        <td th:text="${leaderboardEntry.getNickname()}"></td>
+                        <td th:text="${leaderboardEntry.getWins()}"></td>
+                        <td th:text="${leaderboardEntry.getLosses()}"></td>
+                        <td th:text="${leaderboardEntry.getPercentage()}"></td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:include = "layout :: page">
+<head th:fragment="head">
+    <title>Name League</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body th:fragment="content">
+    <div class="title text-center">
+        <h1>Name Your Sub League</h1>
+    </div>
+    <!-- <div class="text-center">
+    <h4>Name your subleague</h4>
+</div> -->
+<div class="row">
+    <div class="col-xs-offset-3 col-sm-6 col-md-6">
+        <div class="form-input">
+            <div th:if="${param.error}" class="alert alert-danger">
+                Error saving game, winner and loser cannot be the same
+            </div>
+        </div>
+    </div>
+</div>
+<form class="form-centre" action="/name2" th:action="@{/sub-leagues/name2}" th:object="${createLeague}" method="post">
+    <div class="row">
+        <div class="col-xs-offset-3 col-sm-6 col-md-6">
+            <div class="form-group">
+                <input id="name" name="name" type="text" th:field="${createLeague.name}" class="form-control input-lg" placeholder="Name" required="required"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-offset-3 col-sm-6 col-md-6">
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Create"/>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

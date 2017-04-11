@@ -1,6 +1,7 @@
 package com.htisolutions.poolref.viewModels;
 
 import com.htisolutions.poolref.entities.User;
+import java.util.*;
 
 public class LeaderBoardEntryViewModel {
 
