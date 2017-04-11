@@ -3,6 +3,7 @@ package com.htisolutions.poolref.services;
 import com.htisolutions.poolref.entities.Game;
 import com.htisolutions.poolref.entities.League;
 import com.htisolutions.poolref.entities.User;
+import com.htisolutions.poolref.entities.LeagueDao;
 import com.htisolutions.poolref.repositories.UserLeagueMappingRepository;
 import com.htisolutions.poolref.viewModels.LeaderBoardEntryViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,19 +17,21 @@ public class SubLeaguesService {
 
     private GameService gameService;
     private UserLeagueMappingRepository userLeagueMappingRepository;
+    private UserService userService;
 
     @Autowired
-    SubLeaguesService(GameService gameService, UserLeagueMappingRepository userLeagueMappingRepository) {
+    SubLeaguesService(GameService gameService, UserLeagueMappingRepository userLeagueMappingRepository, LeagueDao leagueDao) {
         this.gameService = gameService;
         this.userLeagueMappingRepository = userLeagueMappingRepository;
+        this.userService = userService;
     }
 
 
-    public List<List<LeaderBoardEntryViewModel>> calculateSubLeagues(User user) {
+    public Map<String, List<LeaderBoardEntryViewModel>> calculateSubLeagues(User user) {
         Iterable<League> subLeagues = userLeagueMappingRepository.findAllLeaguesByUserId(user.getId());
-        List<List<LeaderBoardEntryViewModel>> subLeagueTables = new ArrayList<>();
+        Map<String, List<LeaderBoardEntryViewModel>> subLeagueTables = new HashMap<String, List<LeaderBoardEntryViewModel>>();
         for (League subLeague : subLeagues) {
-            subLeagueTables.add(calculateSubLeague(subLeague));
+            subLeagueTables.put(subLeague.getName(), calculateSubLeague(subLeague));
         }
         return subLeagueTables;
     }
@@ -72,5 +75,36 @@ public class SubLeaguesService {
         }
 
         return subLeagueEntries;
+    }
+
+    public long createLeague(String name) {
+      long id = userLeagueMappingRepository.saveLeague(name);
+      return id;
+    }
+
+    public Boolean addPlayers(long leagueId, long userId) {
+        for(User user : userLeagueMappingRepository.findAllUsersByLeagueId(leagueId)) {
+            if(userId == user.getId()) {
+                return false;
+            }
+        }
+        return userLeagueMappingRepository.addPlayers(leagueId, userId);
+    }
+
+    public Iterable<User> getPlayers(long id) {
+        return userLeagueMappingRepository.findAllUsersByLeagueId(id);
+    }
+
+    public String getLeagueName(long id) {
+      return userLeagueMappingRepository.getLeagueName(id);
+    }
+
+    public Iterable<String> getLeagues(User user) {
+        List<String> leagues = new ArrayList<String>();
+        for (League mapping : userLeagueMappingRepository.findAllLeaguesByUserId(user.getId())) {
+            String name = mapping.getName();
+            leagues.add(name);
+        }
+        return leagues;
     }
 }

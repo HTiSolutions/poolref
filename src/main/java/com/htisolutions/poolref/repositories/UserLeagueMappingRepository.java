@@ -49,8 +49,10 @@ public class UserLeagueMappingRepository {
             User user = userDao.findOne(mapping.getUserId());
             users.add(user);
         }
-
-        return users;
+        if(users != null) {
+          return users;
+        }
+        return null;
     }
 
     public void saveLeague(League league, List<Long> userIds) {
@@ -63,4 +65,40 @@ public class UserLeagueMappingRepository {
 
         userLeagueMappingDao.save(mappings);
     }
-}
+
+    public long saveLeague(String name) {
+      League league = new League(name);
+      try {
+        leagueDao.save(league);
+        return league.getId();
+      }
+      catch(Exception ex) {
+
+      }
+      return 0;
+    }
+
+    public Boolean addPlayers(long leagueId, long userId) {
+      UserLeagueMapping mapping = new UserLeagueMapping(leagueId, userId);
+      try {
+        UserLeagueMapping savedMapping = userLeagueMappingDao.save(mapping);
+        if (savedMapping != null) {
+          return true;
+        }
+      }
+      catch(Exception ex) {
+
+      }
+      return false;
+    }
+
+    public String getLeagueName(long id) {
+      League league = leagueDao.findOne(id);
+      if(league != null) {
+        return league.getName();
+      }
+      return null;
+    }
+
+
+ }

@@ -1,9 +1,11 @@
 package com.htisolutions.poolref.viewModels;
 
+import java.util.*;
+
 public class LeaderBoardEntryViewModel {
 
     private Integer position;
-
+    
     private String nickname;
 
     private Integer wins;
