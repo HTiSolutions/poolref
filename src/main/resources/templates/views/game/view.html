@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:include = "layout :: page">
+<head th:fragment="head">
+    <title>View Game</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body th:fragment="content">
+
+    <div class="title text-center">
+        <h1>Game #<span th:text="${game.getGameId()}"></span></h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p align="center">
+                <span th:text="${game.getDate()}"></span>
+            </p>
+        </div>
+    </div>
+
+    <br/>
+    <div class="row">
+        <div class="col-md-4">
+            <p align="center">
+                <b>WINNER</b>
+                <br/>
+                <span th:text="${game.getWinnerName()}"></span>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <p align="center">
+                <b>VS</b>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <p align="center">
+                <b>LOSER</b>
+                <br/>
+                <span th:text="${game.getLoserName()}"></span>
+            </p>
+        </div>
+    </div>
+
+    <div>
+        <hr/>
+        <h3>Game States</h3>
+
+        <div>
+            <div class="col-md-5">
+                <img src="/game/photo"/>
+            </div>
+            <div class="col-md-2">
+                <p align="center">
+                    -------->
+                </p>
+            </div>
+            <div class="col-md-5">
+                <img src="/game/photo"/>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+<style>
+   img {
+       max-width: 100%;
+       height: auto;
+       width: auto\9; /* ie8 */
+   }
+</style>
