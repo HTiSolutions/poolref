@@ -2,21 +2,21 @@
     {
       "stateId": 0,
       "ballLocations": [
-        {"ballNum": 1, "x": 10, "y": 10},
-        {"ballNum": 2, "x": 10, "y": 10},
-        {"ballNum": 3, "x": 10, "y": 10},
-        {"ballNum": 4, "x": 10, "y": 10},
-        {"ballNum": 5, "x": 10, "y": 10}
+        {"ballNum": 1, "x": 500, "y": 100},
+        {"ballNum": 2, "x": 500, "y": 200},
+        {"ballNum": 3, "x": 500, "y": 300},
+        {"ballNum": 4, "x": 500, "y": 400},
+        {"ballNum": 5, "x": 500, "y": 500}
       ]
     },
     {
       "stateId": 1,
       "ballLocations": [
-        {"ballNum": 1, "x": 20, "y": 20},
-        {"ballNum": 2, "x": 20, "y": 20},
-        {"ballNum": 3, "x": 20, "y": 20},
-        {"ballNum": 4, "x": 20, "y": 20},
-        {"ballNum": 5, "x": 20, "y": 20}
+        {"ballNum": 1, "x": 100, "y": 100},
+        {"ballNum": 2, "x": 100, "y": 200},
+        {"ballNum": 3, "x": 100, "y": 300},
+        {"ballNum": 4, "x": 100, "y": 400},
+        {"ballNum": 5, "x": 100, "y": 500}
       ]
     }
   ]

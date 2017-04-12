@@ -40,25 +40,16 @@
         </div>
     </div>
 
-    <div>
-        <hr/>
-        <h3>Game States</h3>
-
+    <div th:if="${game.getGameData()} != null">
         <div>
-            <div class="col-md-5">
-                <img src="/game/photo"/>
+            <div class="col-md-6" align="centre">
+                <img th:src="@{/game/photo/?gameId={gameId}&amp;stateId={stateId}(gameId=${game.getGameId()}, stateId=0)}" />
             </div>
-            <div class="col-md-2">
-                <p align="center">
-                    -------->
-                </p>
-            </div>
-            <div class="col-md-5">
-                <img src="/game/photo"/>
+            <div class="col-md-6" align="centre">
+                <img th:src="@{/game/photo/?gameId={gameId}&amp;stateId={stateId}(gameId=${game.getGameId()}, stateId=1)}" />
             </div>
         </div>
     </div>
-
 
 </body>
 </html>
@@ -69,4 +60,5 @@
        height: auto;
        width: auto\9; /* ie8 */
    }
+
 </style>

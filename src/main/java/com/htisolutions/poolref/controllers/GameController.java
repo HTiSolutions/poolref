@@ -1,5 +1,7 @@
 package com.htisolutions.poolref.controllers;
 import com.htisolutions.poolref.models.GameEntry;
+import com.htisolutions.poolref.models.JSON.Ball;
+import com.htisolutions.poolref.models.JSON.GameState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.*;
@@ -51,14 +53,29 @@ public class GameController {
 
     @RequestMapping("/photo")
     @ResponseBody
-    public HttpEntity<byte[]> photo() {
+    public HttpEntity<byte[]> photo(Long gameId, Integer stateId) {
 
         try {
-            URL url = GameController.class.getResource("/images/rectangle.png");
-            BufferedImage img = ImageIO.read(url);
+            String resourcePath = GameController.class.getResource("/images/").getPath();
+
+            BufferedImage table = ImageIO.read(new File(resourcePath, "pool_table.png"));
+            BufferedImage output = new BufferedImage(table.getWidth(), table.getHeight(), BufferedImage.TYPE_INT_ARGB);
+
+            Graphics g = output.getGraphics();
+            g.drawImage(table, 0, 0, null);
+
+            GameEntry gameEntry = gameService.getGameEntryById(gameId);
+            GameState gameState = gameEntry.getGameData().getGameStates().get(stateId);
+
+            for (Ball ball : gameState.getBallLocations()) {
+                String fileName = String.format("b%d.png", ball.getBallNum());
+                BufferedImage ballImage =  ImageIO.read(new File(resourcePath + "balls/", fileName));
+                Image image = ballImage.getScaledInstance(40, 40, Image.SCALE_DEFAULT);
+                g.drawImage(image, ball.getX(), ball.getY(), null);
+            }
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write( img, "png", baos );
+            ImageIO.write(output, "png", baos );
             baos.flush();
             byte[] image = baos.toByteArray();
             baos.close();
