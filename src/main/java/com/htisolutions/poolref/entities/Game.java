@@ -1,8 +1,5 @@
 package com.htisolutions.poolref.entities;
 
-
-import org.springframework.data.annotation.CreatedDate;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -15,18 +12,22 @@ public class Game {
     private Long id;
 
     @NotNull
-    @Column(name="date")
+    @Column(name = "date")
     private Date date;
 
     @NotNull
-    @Column(name="winner_id")
+    @Column(name = "winner_id")
     private Long winnerId;
 
     @NotNull
-    @Column(name="loser_id")
+    @Column(name = "loser_id")
     private Long loserId;
 
-    public Game() { }
+    @Column(name = "game_data")
+    private String getGameData;
+
+    public Game() {
+    }
 
     public Game(Long id) {
         this.id = id;
@@ -53,4 +54,10 @@ public class Game {
     public Long getLoserId() {
         return this.loserId;
     }
+
+    public String getGameData() {
+        return this.getGameData;
+    }
+
 }
+

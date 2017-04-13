@@ -38,7 +38,10 @@
                         <a th:href="@{/profile/?id={userId}(userId=${game.getLoserId()})}" th:text="${game.getLoserName()}"></a>
                     </td>
                     <td class="form-group">
-                        <a th:if="${profile.getEnableButton()} == true" th:href="@{/profile/delete?id={gameId}(gameId=${game.getGameId()})}">
+                        <a th:href="@{/game/view?id={gameId}(gameId=${game.getGameId()})}">
+                            <button type="button" class="btn btn-primary">View</button>
+                        </a>
+                        <a th:if="${profile.isDeleteButtonEnabled()} == true" th:href="@{/game/delete?id={gameId}(gameId=${game.getGameId()})}">
                             <button type="button" class="btn btn-danger">Delete</button>
                         </a>
                     </td>
