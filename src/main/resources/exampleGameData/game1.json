@@ -2,21 +2,31 @@
     {
       "stateId": 0,
       "ballLocations": [
-        {"ballNum": 1, "x": 500, "y": 100},
-        {"ballNum": 2, "x": 500, "y": 200},
-        {"ballNum": 3, "x": 500, "y": 300},
-        {"ballNum": 4, "x": 500, "y": 400},
-        {"ballNum": 5, "x": 500, "y": 500}
+        {"ballNum": 0, "x": 23, "y": 50},
+        {"ballNum": 1, "x": 76, "y": 50},
+        {"ballNum": 14, "x": 80, "y": 45},
+        {"ballNum": 9, "x": 80, "y": 55},
+        {"ballNum": 8, "x": 84, "y": 50},
+        {"ballNum": 2, "x": 84, "y": 40},
+        {"ballNum": 6, "x": 84, "y": 60},
+        {"ballNum": 13, "x": 88, "y": 35},
+        {"ballNum": 15, "x": 88, "y": 45},
+        {"ballNum": 7, "x": 88, "y": 55},
+        {"ballNum": 10, "x": 88, "y": 65},
+        {"ballNum": 5, "x": 92, "y": 30},
+        {"ballNum": 12, "x": 92, "y": 40},
+        {"ballNum": 4, "x": 92, "y": 50},
+        {"ballNum": 11, "x": 92, "y": 60},
+        {"ballNum": 3, "x": 92, "y": 70}
       ]
     },
     {
       "stateId": 1,
       "ballLocations": [
-        {"ballNum": 1, "x": 100, "y": 100},
-        {"ballNum": 2, "x": 100, "y": 200},
-        {"ballNum": 3, "x": 100, "y": 300},
-        {"ballNum": 4, "x": 100, "y": 400},
-        {"ballNum": 5, "x": 100, "y": 500}
+        {"ballNum": 1, "x": 0, "y": 0},
+        {"ballNum": 2, "x": 0, "y": 100},
+        {"ballNum": 3, "x": 100, "y": 0},
+        {"ballNum": 4, "x": 100, "y": 100}
       ]
     }
   ]

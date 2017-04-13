@@ -67,11 +67,25 @@ public class GameController {
             GameEntry gameEntry = gameService.getGameEntryById(gameId);
             GameState gameState = gameEntry.getGameData().getGameStates().get(stateId);
 
+            Double cushionSize = 60.0;
+            Double ballSize = 40.0;
+
             for (Ball ball : gameState.getBallLocations()) {
                 String fileName = String.format("b%d.png", ball.getBallNum());
                 BufferedImage ballImage =  ImageIO.read(new File(resourcePath + "balls/", fileName));
-                Image image = ballImage.getScaledInstance(40, 40, Image.SCALE_DEFAULT);
-                g.drawImage(image, ball.getX(), ball.getY(), null);
+                Image image = ballImage.getScaledInstance(ballSize.intValue(), ballSize.intValue(), Image.SCALE_DEFAULT);
+
+                Double playingX = (table.getWidth() - (2*cushionSize));
+                Double playingY = (table.getHeight() - (2*cushionSize));
+
+                Double centreBallX = ((playingX/100) * ball.getX()) + (cushionSize);
+                Double centreBallY = ((playingY/100) * ball.getY()) + (cushionSize);
+
+                Long adjustment = Math.round(ballSize/2 * Math.cos(Math.PI/4));
+                Integer ballX = centreBallX.intValue() - adjustment.intValue();
+                Integer ballY = centreBallY.intValue() - adjustment.intValue();
+
+                g.drawImage(image, ballX, ballY, null);
             }
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
