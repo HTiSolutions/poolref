@@ -40,13 +40,34 @@
         </div>
     </div>
 
-    <div th:if="${game.getGameData()} != null">
-        <div>
-            <div class="col-md-6" align="centre">
-                <img th:src="@{/game/photo/?gameId={gameId}&amp;stateId={stateId}(gameId=${game.getGameId()}, stateId=0)}" />
+    <div th:if="${game.getGameData()} != null" class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img th:src="@{/game/photo/?gameId={gameId}&amp;stateId={stateId}(gameId=${game.getGameId()}, stateId=${index})}" />
             </div>
-            <div class="col-md-6" align="centre">
-                <img th:src="@{/game/photo/?gameId={gameId}&amp;stateId={stateId}(gameId=${game.getGameId()}, stateId=1)}" />
+            <div class="col-md-6">
+                <img th:src="@{/game/photo/?gameId={gameId}&amp;stateId={stateId}(gameId=${game.getGameId()}, stateId=${index +1})}" />
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-5">
+                <a th:if="${index} != 0" th:href="@{/game/view/?id={id}&amp;index={index}(id=${game.getGameId()}, index=${index}-1)}">
+                    <button type="button" class="btn btn-default">&laquo; Previous</button>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <p align="center">
+                    <b><span th:text="${index + 1}"></span>
+                        /
+                        <span th:text="${game.getGameData().getGameStates().size() -1}"></span>
+                    </b>
+                </p>
+            </div>
+            <div class="col-md-5" align="right">
+                <a th:if="${index} != ${game.getGameData().getGameStates().size() -2}" th:href="@{/game/view/?id={id}&amp;index={index}(id=${game.getGameId()}, index=${index}+1)}">
+                    <button class="btn btn-default">Next &raquo;</button>
+                </a>
             </div>
         </div>
     </div>

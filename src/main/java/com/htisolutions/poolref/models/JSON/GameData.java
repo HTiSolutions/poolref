@@ -6,8 +6,6 @@ public class GameData {
 
     private List<GameState> gameStates;
 
-
-
     public List<GameState> getGameStates() {
         return this.gameStates;
     }
