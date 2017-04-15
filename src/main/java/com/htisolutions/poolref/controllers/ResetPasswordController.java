@@ -2,9 +2,9 @@ package com.htisolutions.poolref.controllers;
 
 import com.htisolutions.poolref.entities.User;
 import com.htisolutions.poolref.services.ResetPasswordService;
-import com.htisolutions.poolref.viewModels.resetPasswordViewModels.ResetPasswordNicknameViewModel;
-import com.htisolutions.poolref.viewModels.resetPasswordViewModels.ResetPasswordPasswordViewModel;
-import com.htisolutions.poolref.viewModels.resetPasswordViewModels.ResetPasswordQuestionViewModel;
+import com.htisolutions.poolref.viewModels.resetPassword.ResetPasswordNicknameViewModel;
+import com.htisolutions.poolref.viewModels.resetPassword.ResetPasswordPasswordViewModel;
+import com.htisolutions.poolref.viewModels.resetPassword.ResetPasswordQuestionViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +23,7 @@ public class ResetPasswordController {
     @RequestMapping()
     public ModelAndView index() {
         ResetPasswordNicknameViewModel viewModel = new ResetPasswordNicknameViewModel();
-        ModelAndView modelAndView = new ModelAndView("views/reset-password-nickname", "enterNickname", viewModel);
+        ModelAndView modelAndView = new ModelAndView("views/resetPassword/nickname", "enterNickname", viewModel);
         modelAndView.addObject("resetPasswordNicknameViewModel", viewModel);
         return modelAndView;
     }
@@ -44,7 +44,7 @@ public class ResetPasswordController {
         if (resetPasswordService.canAnswerQuestion()) {
             ResetPasswordQuestionViewModel viewModel = new ResetPasswordQuestionViewModel();
             viewModel.setQuestion(resetPasswordService.getQuestion());
-            ModelAndView modelAndView = new ModelAndView("views/reset-password-question", "enterQuestion", viewModel);
+            ModelAndView modelAndView = new ModelAndView("views/resetPassword/question", "enterQuestion", viewModel);
             modelAndView.addObject("resetQuestionViewModel", viewModel);
             return modelAndView;
         }
@@ -68,7 +68,7 @@ public class ResetPasswordController {
     public ModelAndView password() {
         if (resetPasswordService.canResetPassword()) {
             ResetPasswordPasswordViewModel resetPasswordPasswordViewModel = new ResetPasswordPasswordViewModel();
-            ModelAndView modelAndView = new ModelAndView("views/reset-password-password", "enterPassword", resetPasswordPasswordViewModel);
+            ModelAndView modelAndView = new ModelAndView("views/resetPassword/password", "enterPassword", resetPasswordPasswordViewModel);
             modelAndView.addObject("resetPasswordPasswordViewModel", resetPasswordPasswordViewModel);
             return modelAndView;
         }else{

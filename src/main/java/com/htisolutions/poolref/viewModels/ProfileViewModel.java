@@ -1,6 +1,5 @@
 package com.htisolutions.poolref.viewModels;
 
-import com.htisolutions.poolref.entities.Game;
 import com.htisolutions.poolref.entities.User;
 import com.htisolutions.poolref.models.GameEntry;
 import com.htisolutions.poolref.models.UserStat;
@@ -15,10 +14,13 @@ public class ProfileViewModel {
 
     private List <GameEntry> gamesInvolved;
 
-    public ProfileViewModel(User user, UserStat stat, List<GameEntry> gamesInvolved){
+    private Boolean enableDeleteButton;
+
+    public ProfileViewModel(User user, UserStat stat, List<GameEntry> gamesInvolved, Boolean enableDeleteButton){
         this.user = user;
         this.stat = stat;
         this.gamesInvolved = gamesInvolved;
+        this.enableDeleteButton = enableDeleteButton;
     }
 
     public String getFirstName(){ return ("First name: " + user.getForename()); }
@@ -48,5 +50,9 @@ public class ProfileViewModel {
     }
 
     public List <GameEntry> getGamesInvolved(){return gamesInvolved;}
+
+    public Boolean isDeleteButtonEnabled(){
+       return(enableDeleteButton);
+    }
 
 }

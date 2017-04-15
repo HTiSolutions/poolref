@@ -1,5 +1,6 @@
 package com.htisolutions.poolref.controllers;
 
+import com.htisolutions.poolref.entities.User;
 import com.htisolutions.poolref.services.ResultsService;
 import com.htisolutions.poolref.viewModels.ResultEntryViewModel;
 import org.junit.Test;
@@ -35,7 +36,7 @@ public class ResultsControllerTest {
     @Test
     public void validateFormName() throws Exception {
         List<ResultEntryViewModel> results = new ArrayList<>();
-        results.add(new ResultEntryViewModel(new Date().toString(), "bm15731", "gc15xxx"));
+        results.add(new ResultEntryViewModel(new Date().toString(), new User("brad","miles","bm","x"), new User("adam","stein","as","x")));
         given(resultsService.getResults()).willReturn(results);
 
         mvc.perform(MockMvcRequestBuilders.get("/results/"))

@@ -16,13 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class ProfileController {
 
     private ProfileService profileService;
-    private GameService gameService;
     private UserService userService;
 
     @Autowired
-    ProfileController(ProfileService profileService, GameService gameService, UserService userService) {
+    ProfileController(ProfileService profileService, UserService userService) {
         this.profileService = profileService;
-        this.gameService = gameService;
         this.userService = userService;
     }
 
@@ -35,16 +33,8 @@ public class ProfileController {
                 ? (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()
                 : userService.getUserById(userId);
 
-        ProfileViewModel viewModel = profileService.generateProfile(user);
+        ProfileViewModel profileViewModel = profileService.generateProfile(user);
 
-        return new ModelAndView("views/profile", "profile", viewModel);
-    }
-
-    @RequestMapping(value = "/delete")
-    public String delete(Long id) {
-
-        gameService.gameDelete(id);
-
-        return ("redirect:/profile");
+        return new ModelAndView("views/profile", "profile", profileViewModel);
     }
 }

@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:include = "layout :: page">
+<head th:fragment="head">
+    <title>Create a Sub League</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="/jQuery/jquery-3.1.1.js"></script>
+</head>
+<body th:fragment="content">
+    <div class="title text-center">
+        <h1 th:text="${createLeague.getName()}"></h1>
+    </div>
+    <ul style="list-style-type: none;" id="demo"></ul>
+    <p id="ajax"></p>
+    <div class="row">
+        <div class="col-xs-offset-2 col-sm-8 col-md-8">
+            <div class="form-group">
+                <select id="player" name="playerId" title="Select users" class="form-control">
+                    <option th:each="user : ${createLeague.users}" th:value="${user.nickname}" th:text="${user.nickname}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-1 col-sm-2 col-md-2">
+            <div class="form-group">
+                <button onclick="addPlayers()" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-offset-3 col-sm-6 col-md-6">
+            <div class="form-group">
+                <button onclick="submitPlayers()" class="btn btn-primary btn-lg btn-block" >Create</button>
+            </div>
+        </div>
+    </div>
+    <script>
+    var players = [];
+    function addPlayers() {
+        var x = document.getElementById("player").value;
+        players.push(x);
+        var para = document.createElement("li");
+        var node = document.createTextNode(x);
+        para.appendChild(node);
+        document.getElementById("demo").appendChild(para);
+    }
+    function submitPlayers() {
+        var playerList = JSON.stringify(players);
+        var greeting = "hello";
+        var error = "error";
+        $.ajax({
+            url: '/sub-leagues/getPlayers',
+            type: 'POST',
+            data: playerList,
+            contentType: "application/json; charset=utf-8",
+            success: function(result) {
+                location.assign('/sub-leagues');
+            },
+            error: function(result) {
+                location.assign('/sub-leagues/create1');
+            }
+        });
+    }
+    </script>
+</body>
+</html>

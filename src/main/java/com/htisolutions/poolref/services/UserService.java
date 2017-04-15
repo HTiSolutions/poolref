@@ -26,14 +26,15 @@ public class UserService {
         List<User> listOfUsers = new ArrayList<>();
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         for(User user : users){
-            listOfUsers.add(user);
+            if (!user.getId().equals(currentUser.getId())) {
+                listOfUsers.add(user);
+            }
         }
 
         Comparator<User> userComparator = Comparator
                 .comparing((User e)-> e.getSurname().toUpperCase());
 
         Collections.sort(listOfUsers, userComparator);
-        listOfUsers.remove(currentUser);
         listOfUsers.add(0, currentUser);
         return listOfUsers;
     }
@@ -54,4 +55,8 @@ public class UserService {
         return user;
     }
 
+    public User getUserByNickname(String name) {
+      User user = userDao.findByNickname(name);
+      return user;
+    }
 }

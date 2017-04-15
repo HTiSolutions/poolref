@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:include = "layout :: page">
+<head th:fragment="head">
+    <title>View Game</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body th:fragment="content">
+
+    <div class="title text-center">
+        <h1>Game #<span th:text="${game.getGameId()}"></span></h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p align="center">
+                <span th:text="${game.getDate()}"></span>
+            </p>
+        </div>
+    </div>
+
+    <br/>
+    <div class="row">
+        <div class="col-md-4">
+            <p align="center">
+                <b>WINNER</b>
+                <br/>
+                <span th:text="${game.getWinnerName()}"></span>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <p align="center">
+                <b>VS</b>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <p align="center">
+                <b>LOSER</b>
+                <br/>
+                <span th:text="${game.getLoserName()}"></span>
+            </p>
+        </div>
+    </div>
+
+    <div th:if="${game.getGameData()} != null" class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img th:src="@{/game/photo/?gameId={gameId}&amp;stateId={stateId}(gameId=${game.getGameId()}, stateId=${index})}" />
+            </div>
+            <div class="col-md-6">
+                <img th:src="@{/game/photo/?gameId={gameId}&amp;stateId={stateId}(gameId=${game.getGameId()}, stateId=${index +1})}" />
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-5">
+                <a th:if="${index} != 0" th:href="@{/game/view/?id={id}&amp;index={index}(id=${game.getGameId()}, index=${index}-1)}">
+                    <button type="button" class="btn btn-default">&laquo; Previous</button>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <p align="center">
+                    <b><span th:text="${index + 1}"></span>
+                        /
+                        <span th:text="${game.getGameData().getGameStates().size() -1}"></span>
+                    </b>
+                </p>
+            </div>
+            <div class="col-md-5" align="right">
+                <a th:if="${index} != ${game.getGameData().getGameStates().size() -2}" th:href="@{/game/view/?id={id}&amp;index={index}(id=${game.getGameId()}, index=${index}+1)}">
+                    <button class="btn btn-default">Next &raquo;</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<style>
+   img {
+       max-width: 100%;
+       height: auto;
+       width: auto\9; /* ie8 */
+   }
+
+</style>
