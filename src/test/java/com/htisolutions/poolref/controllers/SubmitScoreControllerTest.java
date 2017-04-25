@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.htisolutions.poolref.entities.User;
 import com.htisolutions.poolref.services.GameService;
+import com.htisolutions.poolref.services.TwitterService;
 import com.htisolutions.poolref.services.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +34,9 @@ public class SubmitScoreControllerTest {
 
     @MockBean
     private GameService gameService;
+
+    @MockBean
+    private TwitterService twitterService;
 
     @Test
     public void validateFormName() throws Exception {

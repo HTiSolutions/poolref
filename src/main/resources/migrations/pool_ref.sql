@@ -25,7 +25,6 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
 
-
 -- -----------------------------------------------------
 -- Table `pool_ref`.`game`
 -- -----------------------------------------------------
@@ -51,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `pool_ref`.`game` (
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

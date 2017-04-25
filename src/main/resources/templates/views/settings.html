@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:include = "layout :: page">
+<head th:fragment="head">
+    <title>Settings</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body th:fragment="content">
+    <div class="title text-center">
+        <h1>Settings</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-offset-3 col-sm-6 col-md-6">
+            <div class="form-group">
+                <a href="/security-question">
+                    <button class="btn btn-primary btn-lg btn-block">Set Security Question</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-offset-3 col-sm-6 col-md-6">
+            <div class="form-group">
+                <a href="/twitter?register_in_progress=false">
+                    <button class="btn btn-primary btn-lg btn-block">Connect To Twitter</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

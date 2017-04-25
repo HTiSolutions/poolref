@@ -27,6 +27,8 @@ public class User {
 
     private String securityQuestionAnswer;
 
+    private Long twitterTokenId;
+
     public User() { }
 
     public User(Long id) {
@@ -38,6 +40,7 @@ public class User {
         this.surname = surname;
         this.nickname = nickname;
         this.hashedPassword = hashedPassword;
+        twitterTokenId = null;
     }
 
     public Long getId() {
@@ -56,11 +59,17 @@ public class User {
         return this.nickname;
     }
 
+    public Long getTwitterTokenId() {
+        return twitterTokenId;
+    }
+
     public String getHashedpassword() {
         return this.hashedPassword;
     }
 
     public Long getSecurityQuestionId(){return securityQuestionId;}
+
+    public void setTwitterTokenId(Long twitterTokenId){this.twitterTokenId = twitterTokenId;}
 
     public String getSecurityQuestionAnswer(){return securityQuestionAnswer;}
 
