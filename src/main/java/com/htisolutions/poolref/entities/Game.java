@@ -24,7 +24,7 @@ public class Game {
     private Long loserId;
 
     @Column(name = "game_data")
-    private String getGameData;
+    private String gameData;
 
     public Game() {
     }
@@ -56,7 +56,11 @@ public class Game {
     }
 
     public String getGameData() {
-        return this.getGameData;
+        return this.gameData;
+    }
+
+    public void setGameData(String gameData) {
+        this.gameData = gameData;
     }
 
 }
