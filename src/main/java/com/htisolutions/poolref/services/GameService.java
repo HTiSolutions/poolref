@@ -10,10 +10,15 @@ import com.htisolutions.poolref.models.GameEntry;
 import com.htisolutions.poolref.models.JSON.Ball;
 import com.htisolutions.poolref.models.JSON.GameData;
 import com.htisolutions.poolref.models.JSON.GameState;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -38,6 +43,10 @@ public class GameService {
         this.userDao = userDao;
     }
 
+    public Game findOne(Long id) {
+        return gameDao.findOne(id);
+    }
+
     public GameEntry getGameEntryById(Long id) {
         Game game = gameDao.findOne(id);
         User winner = userDao.findOne(game.getWinnerId());
@@ -53,15 +62,24 @@ public class GameService {
         return gameEntry;
     }
 
+    public Boolean gameSave(Game game) {
+        try {
+            gameDao.save(game);
+        } catch (Exception ex) {
+            log.error("Error saving the game: {}", ex.toString());
+        }
+        return true;
+    }
+
     public Boolean gameSave(Date date, Long winnerId, Long loserId) {
         if (winnerId != loserId) {
             try {
                 Game game = new Game(date, winnerId, loserId);
                 gameDao.save(game);
+                return true;
             } catch (Exception ex) {
                 log.error("Error saving the game: {}", ex.toString());
             }
-            return true;
         }
         return false;
     }

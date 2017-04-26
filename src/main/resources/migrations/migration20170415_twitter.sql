@@ -4,7 +4,7 @@ CREATE TABLE `pool_ref`.`twitter_token` (
   `token` VARCHAR(80) NOT NULL,
   `token_secret` VARCHAR(80) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;

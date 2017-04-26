@@ -72,6 +72,24 @@
         </div>
     </div>
 
+    <div th:if="${game.getGameData()} == null" class="bg-info container">
+        <div align="center">
+            <h3>Upload Game Data</h3>
+            <form method="POST" enctype="multipart/form-data" th:action="@{/game/upload}" class="form-inline">
+                <div class="form-group">
+                    <input type="hidden" name="gameId" th:value="${game.getGameId()}"/>
+                    <input type="file" name="file" accept=".json"/>
+                </div>
+
+                <input class="btn btn-primary" type="submit" value="Upload" />
+            </form>
+        </div>
+        <div th:if="${response}" class="bg-danger">
+            <p th:text="${response}"></p>
+        </div>
+
+    </div>
+
 </body>
 </html>
 
