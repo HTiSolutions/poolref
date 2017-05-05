@@ -1,0 +1,100 @@
+2017-04-04 10:58:46.559  INFO 36556 --- [main] c.h.poolref.PoolRefApplication           : Starting PoolRefApplication on Lily.local with PID 36556 (/Users/garethcarless/Documents/Bristol/Second_Year/SPE/poolref/build/classes/main started by garethcarless in /Users/garethcarless/Documents/Bristol/Second_Year/SPE/poolref)
+2017-04-04 10:58:46.571 DEBUG 36556 --- [main] c.h.poolref.PoolRefApplication           : Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE
+2017-04-04 10:58:46.576  INFO 36556 --- [main] c.h.poolref.PoolRefApplication           : No active profile set, falling back to default profiles: default
+2017-04-04 10:58:47.537  INFO 36556 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1bae316d: startup date [Tue Apr 04 10:58:47 BST 2017]; root of context hierarchy
+2017-04-04 10:58:51.060  INFO 36556 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$949a0fbe] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-04-04 10:58:51.966  INFO 36556 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 80 (http)
+2017-04-04 10:58:51.998  INFO 36556 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-04-04 10:58:52.001  INFO 36556 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.5
+2017-04-04 10:58:52.297  INFO 36556 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-04-04 10:58:52.832  INFO 36556 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-04-04 10:58:52.833  INFO 36556 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-04-04 10:58:52.834  INFO 36556 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-04-04 10:58:52.834  INFO 36556 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-04-04 10:58:52.836  INFO 36556 --- [localhost-startStop-1] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2017-04-04 10:58:52.838  INFO 36556 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-04-04 10:58:54.733  INFO 36556 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-04-04 10:58:56.359  INFO 36556 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-04-04 10:58:58.411  INFO 36556 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@424ec990, org.springframework.security.web.context.SecurityContextPersistenceFilter@70a54731, org.springframework.security.web.header.HeaderWriterFilter@3f142e87, org.springframework.security.web.authentication.logout.LogoutFilter@720c0996, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4511146f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6369d01c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5b3ee43e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2c06e145, org.springframework.security.web.session.SessionManagementFilter@63c6c5e5, org.springframework.security.web.access.ExceptionTranslationFilter@46a0ef6f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@54ed249f]
+2017-04-04 10:59:00.215  INFO 36556 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-04-04 10:59:00.301 ERROR 36556 --- [main] o.a.coyote.http11.Http11NioProtocol      : Failed to start end point associated with ProtocolHandler [http-nio-80]
+
+java.net.SocketException: Permission denied
+	at sun.nio.ch.Net.bind0(Native Method) ~[na:1.8.0_71]
+	at sun.nio.ch.Net.bind(Net.java:433) ~[na:1.8.0_71]
+	at sun.nio.ch.Net.bind(Net.java:425) ~[na:1.8.0_71]
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223) ~[na:1.8.0_71]
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74) ~[na:1.8.0_71]
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:228) ~[tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:874) ~[tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:590) ~[tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:969) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.addPreviouslyRemovedConnectors(TomcatEmbeddedServletContainer.java:233) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.start(TomcatEmbeddedServletContainer.java:178) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.startEmbeddedServletContainer(EmbeddedWebApplicationContext.java:297) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.finishRefresh(EmbeddedWebApplicationContext.java:145) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:544) [spring-context-4.3.3.RELEASE.jar:4.3.3.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:761) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:371) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1186) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1175) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at com.htisolutions.poolref.PoolRefApplication.main(PoolRefApplication.java:10) [main/:na]
+
+2017-04-04 10:59:00.305 ERROR 36556 --- [main] o.apache.catalina.core.StandardService   : Failed to start connector [Connector[HTTP/1.1-80]]
+
+org.apache.catalina.LifecycleException: Failed to start component [Connector[HTTP/1.1-80]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167) ~[tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225) ~[tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.addPreviouslyRemovedConnectors(TomcatEmbeddedServletContainer.java:233) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.start(TomcatEmbeddedServletContainer.java:178) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.startEmbeddedServletContainer(EmbeddedWebApplicationContext.java:297) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.finishRefresh(EmbeddedWebApplicationContext.java:145) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:544) [spring-context-4.3.3.RELEASE.jar:4.3.3.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:761) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:371) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1186) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1175) [spring-boot-1.4.1.RELEASE.jar:1.4.1.RELEASE]
+	at com.htisolutions.poolref.PoolRefApplication.main(PoolRefApplication.java:10) [main/:na]
+Caused by: org.apache.catalina.LifecycleException: service.getName(): "Tomcat";  Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:976) ~[tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150) ~[tomcat-embed-core-8.5.5.jar:8.5.5]
+	... 13 common frames omitted
+Caused by: java.net.SocketException: Permission denied
+	at sun.nio.ch.Net.bind0(Native Method) ~[na:1.8.0_71]
+	at sun.nio.ch.Net.bind(Net.java:433) ~[na:1.8.0_71]
+	at sun.nio.ch.Net.bind(Net.java:425) ~[na:1.8.0_71]
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223) ~[na:1.8.0_71]
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74) ~[na:1.8.0_71]
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:228) ~[tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:874) ~[tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:590) ~[tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:969) ~[tomcat-embed-core-8.5.5.jar:8.5.5]
+	... 14 common frames omitted
+
+2017-04-04 10:59:00.336  INFO 36556 --- [main] o.apache.catalina.core.StandardService   : Stopping service Tomcat
+2017-04-04 10:59:00.362  INFO 36556 --- [main] utoConfigurationReportLoggingInitializer : 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2017-04-04 10:59:00.366 ERROR 36556 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 80 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 80, or configure this application to listen on another port.
+
+2017-04-04 10:59:00.371  INFO 36556 --- [main] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1bae316d: startup date [Tue Apr 04 10:58:47 BST 2017]; root of context hierarchy
+2017-04-04 10:59:00.383  INFO 36556 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-04-04 10:59:00.388  INFO 36556 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
